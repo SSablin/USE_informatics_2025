@@ -155,7 +155,8 @@ print(abs(int(pxB)), abs(int(pyB)))  # 14271 54727"""
 
 # № 18625 (Уровень: Сложный)
 # SS
-"""clastersA = [[], []]
+"""
+clastersA = [[], []]
 
 for s in open('files/27A_18625.txt'):
     x, y = [float(kl) for kl in s.split()]
@@ -456,5 +457,57 @@ print(int(sx), int(sy))
 # B: -19 -176
 """
 
+# 27 №18390
+"""from math import dist
+
+
+def metoid(cluster):
+    min_s = 10 ** 100
+    for m in cluster:  # потенциальный метоид
+        s = 0
+        for p in cluster:  # все точки кластера
+            s += dist(m, p)
+        if s < min_s:
+            min_s = s
+            point = m
+    return point
+
+
+f = open('files/27_A_18390.txt')
+r, k = map(float, f.readline().replace(',', '.').split())
+data = [tuple(map(float, s.replace(',', '.').split())) for s in f]
+data_cor = []  # список точек без аномалий
+for p1 in data:
+    for p2 in data:
+        if p1 != p2:
+            if dist(p1, p2) <= k:
+                data_cor.append(p1)
+                break
+
+data_2 = data_cor.copy()
+# DBSCAN
+clusters = []
+while data_cor:  # while len(data_cor) > 0
+    clusters.append([data_cor.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data_cor.copy():
+            if dist(p1, p2) < r:
+                clusters[-1].append(p2)
+                data_cor.remove(p2)
+
+metoids = [metoid(cl) for cl in clusters]
+
+# определяем конечный метоид
+min_s = 10 ** 100
+for p in data_2:
+    s = 0
+    for m in metoids:
+        s += dist(p, m)
+    if s < min_s:
+        min_s = s
+        ans = p
+print(int(ans[0] * 10_000), int(ans[1] * 10_000))
+# A: 33923 51105
+# B: 33732 37221"""
 
 

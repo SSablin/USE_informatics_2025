@@ -736,6 +736,26 @@ for left in range(len(pos['L'])):  # Перебираем все позиции 
         min_l = min(min_l, pos['E'][ind['E']] - pos['L'][ind['L']] + 1)
 print(min_l)  # 2000031"""
 
+# Евгений Смирнов
+"""f = open('files/24_18284.txt')
+s = f.readline()
+
+b_l = b_lo = b_lov = -1
+m = 10 ** 8
+
+for i in range(len(s)):
+    if s[i] == 'L':
+        b_l = i
+    if s[i] == 'O':
+        b_lo = b_l
+    if s[i] == 'V':
+        b_lov = b_lo
+    if s[i] == 'E' and b_lov != -1:
+        m = min(m, i - b_lov + 1)
+
+print(m)  # 2000031"""
+
+
 # 24 №18530
 # https://youtu.be/U65my47LR-c?si=ozowbjlOy_9haDK0&t=5636
 # Шастин
