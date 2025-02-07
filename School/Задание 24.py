@@ -815,3 +815,12 @@ for s1 in s.split():
                 l += 1
             m = max(m, total_len + r - l + (total_sum < 20_000))
 print(m)  # 1095"""
+
+# 19969
+"""from re import findall
+
+s = open('files/24_19969.txt').readline().strip()
+
+expr = findall('(?:(?:[a-z])+@(?:[a-z])+[.](?:[a-z])+)', s)
+ans = max((str(x) for x in expr), key=len)
+print(len(ans), ans)  # 230"""
