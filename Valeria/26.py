@@ -639,4 +639,136 @@ s = lenta[k//2:]
 print([x[2] for x in det if x[1] == 'paint'][-1])  # 895
 print(len([x for x in s if x[1] == 'grinding']))  # 18"""
 
+# № 1
+"""Запишите в ответе два натуральных числа через пробел: сначала количество деталей, 
+которые будут отшлифованы, затем номер последней обработанной детали."""
+"""f = open('files/26_1__3whs4.txt')
+c = int(f.readline())  # 1000
+array_details = []
+for i in range(c):
+    detail = list(map(int, f.readline().split()))  # шлифовка, окраска
+    if detail[0] < detail[1]:
+        array_details.append((detail[0], 'grinding', i + 1))
+    else:
+        array_details.append((detail[1], 'paint', i + 1))
+array_details.sort()
+details = []
+lenta = [0] * c
+for detail in array_details:
+    if detail[1] == 'grinding':
+        for i in range(len(lenta)):
+            if lenta[i] == 0:
+                lenta[i] = detail
+                details.append(detail)
+                break
+    else:
+        for i in range(len(lenta) - 1, -1, -1):
+            if lenta[i] == 0:
+                lenta[i] = detail
+                details.append(detail)
+                break
+print(sum(1 for x in details if x[1] == 'grinding'))  # 484
+print(details[-1][2])  # 544"""
+
+# № 2
+"""Запишите в ответе два натуральных числа через пробел: сначала время обработки детали, 
+которая в итоге будет стоять на ленте транспортера на 168 месте, а затем суммарное время окрашивания деталей."""
+"""f = open('files/26_3__3whrj.txt')
+c = int(f.readline())  # 940
+array_details = []
+for i in range(c):
+    detail = list(map(int, f.readline().split()))  # grinding, painting
+    if detail[0] > detail[1]:
+        array_details.append((detail[0], 'grinding', i+1))
+    else:
+        array_details.append((detail[1], 'painting', i+1))
+array_details.sort(reverse=True)
+
+lenta = [0] * c
+for detail in array_details:
+    if detail[1] == 'grinding':
+        for i in range(len(lenta)):
+            if lenta[i] == 0:
+                lenta[i] = list(detail)
+                break
+    else:
+        for i in range(len(lenta) - 1, -1, -1):
+            if lenta[i] == 0:
+                lenta[i] = list(detail)
+                break
+
+print(lenta[168-1][0])  # 1475
+print(sum(x[0] for x in lenta if x[1] == 'painting'))  # 616262"""
+
+# № 3
+"""f = open('files/26_12__491va.txt')
+c = int(f.readline())  # 900
+array_details = []
+for i in range(c):
+    detail = list(map(int, f.readline().split()))
+    if detail[1] > detail[0]:
+        array_details.append((detail[1], 'painting', i))
+    else:
+        array_details.append((detail[0], 'grinding', i))
+array_details.sort(reverse=True)  # т.к. максимальное
+
+lenta = [0] * c
+for detail in array_details:
+    if detail[1] == 'painting':
+        for i in range(len(lenta)):
+            if lenta[i] == 0:
+                lenta[i] = detail
+                break
+    else:
+        for i in range(len(lenta) - 1, -1, -1):
+            if lenta[i] == 0:
+                lenta[i] = detail
+                break
+print(len([x for x in lenta if x[1] == 'painting']))  # 451
+print([x[2] for x in lenta if x[1] == 'grinding'][-1])  # 646"""
+
+# 29461
+"""file = open('files/Задание_26__rg3w.txt')
+lines = file.readlines()
+n = int(lines[0])
+array = list(map(int, lines[1:]))
+array = sorted(array)
+
+i = 0
+tek = 0
+while array[i] <= 130:
+    tek += array[i]
+    i += 1
+t = i + (n - i) // 2 + (n % 2)
+t = 4815 + (9300 - 4815) // 2 + (9300 % 2)
+
+ans = tek + sum(array[t:]) + sum(array[i:t]) // 2 + sum(array[i:t]) % 2
+
+print(ans, array[t - 1])"""
+
+# 30259
+"""file = open('files/4__tdop.txt')
+lines = file.readlines()
+n = int(lines[0])
+array = list(map(int, lines[1:]))
+array = sorted(array)
+
+i = 0
+s = 0
+m = 0
+while array[i] <= 200:
+    s += array[i]
+    i += 1
+
+t = (n - i) // 2
+while t > 0:
+    s += array[i] * 0.7
+    m = array[i]
+    i += 1
+    t -= 1
+
+if (s + sum(array[i:])) % 1 != 0:
+    print(int(s + sum(array[i:])) + 1, m)
+else:
+    print(int(s + sum((array[i:]))), m)"""
 
