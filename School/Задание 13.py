@@ -46,3 +46,34 @@ for ip in net:
     if b.count('1') % 5 == 0:
         c += 1
 print(c)   # 215766"""
+# 18955
+
+"""from ipaddress import *
+ip_1 = ip_address('200.154.190.12')
+ip_2 = ip_address('200.154.184.0')
+for mask in range(32, -1, -1):
+    net1 = ip_network(f'200.154.190.12/{mask}', 0)
+    net2 = ip_network(f'200.154.184.0/{mask}', 0)
+    if net1 == net2 and ip_1 not in [net1[0], net1[-1]] and ip_2 not in [net1[0], net1[-1]]:
+        print(mask)  # 20
+        break"""
+
+# 19748
+"""from ipaddress import *
+
+ip_1 = ip_address('157.220.185.237')
+ip_2 = ip_address('157.220.184.230')
+c = 0
+
+for mask in range(32, -1, -1):
+    if c > 0:
+        print(c)  # 9
+        break
+    c = 0
+    net1 = ip_network(f'{ip_1}/{mask}', 0)
+    net2 = ip_network(f'{ip_2}/{mask}', 0)
+    if net1 == net2 and ip_1 not in [net1[0], net1[-1]] and ip_2 not in [net1[0], net1[-1]]:
+        for ip in net1:
+            b = f'{ip:b}'
+            if b.count('1') == 15:
+                c += 1"""

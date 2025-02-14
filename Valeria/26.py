@@ -772,3 +772,161 @@ if (s + sum(array[i:])) % 1 != 0:
 else:
     print(int(s + sum((array[i:]))), m)"""
 
+# 55489
+"""from math import ceil
+
+f = open('files/7__1i2do.txt')
+n = int(f.readline())  # 1000
+data = []
+
+for i in range(n):
+    data.append(int(f.readline()))
+data.sort()
+
+n_50 = sum(1 for x in data if x > 50) // 2
+c = 0
+mx = 0
+for i in range(n):
+    if data[i] > 50 and c < n_50:
+        c += 1
+        mx = max(mx, data[i])
+        data[i] = data[i] * 0.75
+print(ceil(sum(data)), mx)  # 478739 530"""
+
+# 55490
+"""f = open('files/8__1i2dt.txt')
+n = int(f.readline())
+data = []
+for i in range(n):
+    data.append(int(f.readline()))
+data.sort()
+mx = 0
+n_100 = sum(1 for x in data if x > 100) // 3
+c = 0
+for i in range(n):
+    if data[i] > 100 and c < n_100:
+        mx = max(mx, data[i])
+        data[i] = data[i] * 0.7
+        c += 1
+print(sum(data), mx)  # 480786 397"""
+
+# 57342
+"""from math import ceil
+
+f = open('files/26_23__1kuc9.txt')
+n = int(f.readline())
+data = []
+for i in range(n):
+    data.append(int(f.readline()))
+data.sort()
+
+n_153 = sum(1 for x in data if x > 153) // 4
+mx = 0
+c = 0
+data_simple = []
+for i in range(n):
+    if data[i] > 153 and c < n_153:
+        mx = max(mx, data[i])
+        data[i] = data[i] * 0.6
+        c += 1
+    elif data[i] <= 153:
+        data_simple.append(data[i])
+
+print(ceil(sum(data)), (sum(data_simple) // len(data_simple)))  # 491165 86"""
+
+# 61598
+"""f = open('files/26-2__2yr4z.txt')
+k, n = map(int, f.readline().split())  # 120 100000
+a = []
+for i in range(n):
+    sdacha, osvob = map(int, f.readline().split())
+    a.append((sdacha, osvob))
+a.sort()  # отсортировали по времени сдачи
+c = 0  # кол-во багажа
+z = -1  # номер последней занятой ячейки
+bag = [-1] * k  # время освобождения для каждой ячейки
+for i in range(n):
+    sdacha = a[i][0]
+    osvob = a[i][1]
+    for j in range(k):
+        if sdacha > bag[j]:
+            bag[j] = osvob
+            c += 1
+            z = j + 1
+            break
+print(c, z)  # 5894 119"""
+
+"""f = open('files/26__2y9ji.txt')
+k = int(f.readline())
+n = int(f.readline())
+a = []
+for i in range(n):
+    sdacha, osvob = map(int, f.readline().split())
+    a.append((sdacha, osvob))
+a.sort()  # отсортировали по времени сдачи
+c = 0
+z = 0
+bag = [0] * k
+for i in range(n):
+    sdacha = a[i][0]
+    osvob = a[i][1]
+    for j in range(k):
+        if sdacha > bag[j]:
+            bag[j] = osvob
+            c += 1
+            z = j + 1
+            break
+print(c, z)  # 581 2"""
+
+"""f = open('files/26_6__3mk0m.txt')
+kol_kamera = int(f.readline())
+kol_pas = int(f.readline())
+pas = sorted(list(map(int, i.split())) for i in f)
+zanato = [-1] * kol_kamera
+c = 0
+time = [0 for i in range(3200)]
+k_m = 0
+for p in pas:
+    for i in range(kol_kamera):
+        if p[0] > zanato[i]:
+            zanato[i] = p[0] + p[1]
+            c += 1
+            for m in range(p[0], p[0] + p[1]):
+                time[m] += 1
+            break
+
+for x in time:
+    if x == kol_kamera:
+        k_m += 1
+
+print(kol_pas - c, k_m)  # 585 1059"""
+
+"""file = open('files/26_6__3mk0m.txt')
+count_cameras = int(file.readline())  # количество камер хранения
+count_client = int(file.readline())  # количество пассажиров
+array_client = sorted(list(map(int, i.split())) for i in file)
+cameras = [-1] * count_cameras  # камеры хранения. каждый элемент списка - это камера хранения.
+# в ячейки будем записывать время освобождения определенной камеры хранения
+count = 0  # количество человек, которые смогли положить вещи в камеру хранения
+# временной промежуток от 0 до 3500 минут. Каждый элемент списка это определенная минута.
+# Значение под определенной ячейкой - это количество занятых камер в данную минуту
+time = [0 for i in range(3500)]
+count_minute = 0  # количество минут, в течении которых были заняты все камеры
+for client in array_client:  # проход по клиентам
+    for i in range(len(cameras)):  # проход по камерам хранения
+        # если время прихода текущего клиента больше чем время освобождения данной камеры
+        if client[0] > cameras[i]:
+            cameras[i] = client[0] + client[1]  # тогда записываем время освобождения данной камеры текущим клиентом
+            count += 1
+            # проходимся по минутам от времени прихода до времени ухода текущего клиента
+            for minute in range(client[0], client[0] + client[1]):
+                time[minute] += 1  # отмечаем под каждой минутой, что на одну камеру стало занято больше
+            break  # прерываем цикл, так как текущий клиент уже положил свои вещи и переходим к следующему клиенту
+for i in time:  # проход по отрезку времени
+    if i == count_cameras:  # если количество занятых камер равно количеству камер в файле
+        count_minute += 1  # увеличиваем счётчик минут, в течении которого были заняты все камеры
+# количество людей, которые не смогли положить вещи можно посчитать следующим образом:
+# общее кол-во людей - кол-во людей положивших вещи в камеру
+print(count_client - count, count_minute)  # 585 1059"""
+
+
