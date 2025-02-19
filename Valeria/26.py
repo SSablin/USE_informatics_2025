@@ -929,4 +929,126 @@ for i in time:  # проход по отрезку времени
 # общее кол-во людей - кол-во людей положивших вещи в камеру
 print(count_client - count, count_minute)  # 585 1059"""
 
+# ДЗ
+# 1
+"""f = open('files/26__1udco.txt')
+k = int(f.readline())
+n = int(f.readline())
+pas = sorted(list(map(int, x.split())) for x in f)
 
+cameras = [-1] * k
+count = 0
+time = [0 for i in range(3200)]
+k_last = 0
+for p in pas:
+    for i in range(k):
+        if p[0] > cameras[i]:
+            cameras[i] = p[0] + p[1]
+            count += 1
+            k_last = i
+            for m in range(p[0], p[0] + p[1]):
+                time[m] += 1
+            break
+
+print(count, k_last)  # 547 62"""
+
+# 2
+f = open('files/26__1uvv8.txt')
+k = int(f.readline())
+n = int(f.readline())
+pas = sorted(list(map(int, x.split())) for x in f.readline())
+
+# 3
+# f = open('files/26_10__1vn9i.txt')
+
+# Атракционы
+"""f = open('files/26_11__1vn9j.txt')
+k, n = map(int, f.readline().split())
+a = sorted([list(map(int, i.split())) for i in f])
+
+count = 0
+last = 0
+time_kat = [-1] * k
+time_kon = [-1] * k
+for x in a:
+    st, end = x
+    for j in range(k):
+        if (st > time_kon[j]) or (st == time_kat[j]):
+            count += 1
+            time_kat[j] = st
+            time_kon[j] = end
+            last = j + 1
+            break
+print(count, last)  # 466 102"""
+
+# Автостоянка
+"""f = open('files/26_1__1vn98.txt')
+count_car = int(f.readline())
+
+c = []
+for i in range(count_car):
+    st, duration, type_c = f.readline().split()
+    st, duration = int(st), int(duration)
+    if type_c == 'A':
+        type_c = 0
+    else:
+        type_c = 1
+    c.append([st, duration, type_c])
+c.sort()
+park = [[-1 for i in range(180)], [-1 for i in range(20)]]
+parked_c = 0
+parked_b = 0
+for st, duration, type_c in c:
+    f = False
+    for y in range(type_c, 2):
+        for i in range(len(park[y])):
+            if st >= park[y][i]:
+                park[y][i] = st + duration
+                parked_c += 1
+                if type_c == 1:
+                    parked_b += 1
+                f = True
+                break
+        if f:
+            break
+print(parked_b, count_car - parked_c)  # 143 12"""
+
+
+# Салон красоты
+# f = open('files/26_7__1vn9f.txt')
+# n = int(f.readline())
+# k = int(f.readline())
+# kl = []
+# for x in f:
+#     t_p, t_y = map(int, x.split())
+#     kl.append([t_p, t_y])
+# kl.sort()
+# spot = [-1] * k
+# a = 0  # уже обслужили
+# b = 0  # номер
+# for c in kl:
+#     f = False
+#     for i in range(k):
+#         if c[0] > spot[i] and c[1] <= 1440:
+#             spot[i] = c[1] + 10
+#             f = True
+#             a += 1
+#             b += i + 1
+#             break
+#     if not f:
+#         nt = min(spot)
+#         time_min = nt - c[0]
+#         if time_min <= 20:
+#             ind = spot.index(nt)
+#             T = c[1] - c[0]
+#             if spot[ind] + T <= 1440:
+#                 spot[ind] += 1 + T + 10
+#                 a += 1
+#                 b += ind + 1
+# print(a, b)  # 1936 105133
+
+# ДЗ 17.02
+# 1
+# f = open('files/1__1vrj4.txt')
+# 2
+# f = open('files/26_15__1vn9n.txt')

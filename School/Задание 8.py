@@ -70,3 +70,5 @@ for x in product(alf, repeat=5):
                     "".join(str(x % 2) for x in x).count('00') == 0:
                 c += 1
                 print(x, c)  # 13000"""
+
+
