@@ -24,4 +24,3 @@ for i in range(500):
     if r < 300:
         r_mx = max(r_mx, r)
 print(r_mx)  # 294"""
-
