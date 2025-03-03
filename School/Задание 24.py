@@ -824,3 +824,24 @@ s = open('files/24_19969.txt').readline().strip()
 expr = findall('(?:(?:[a-z])+@(?:[a-z])+[.](?:[a-z])+)', s)
 ans = max((str(x) for x in expr), key=len)
 print(len(ans), ans)  # 230"""
+
+
+# 24
+# №19884
+
+"""s = open('files/24_19884.txt').readline().strip()
+s = s.replace('-', '*').replace('6', '7').replace('8', '7').replace('9', '7').replace('**', '* *').replace('**', '* *')
+
+while '*00' in s:
+    s = s.replace('*00', '*0 *0')
+s = s.replace('*07', '*0 7')
+count = 0
+for x in s.split():
+    sub = x.strip('*')
+    cnt = sub.count('7') + sub.count('0')
+    for t in sub.split('*'):
+        cnt -= len(t)
+        for i in range(len(t)):
+            if t[i] == '7' or i == len(t) - 1:
+                count += cnt
+print(count)  # 30460483"""

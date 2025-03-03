@@ -510,4 +510,29 @@ print(int(ans[0] * 10_000), int(ans[1] * 10_000))
 # A: 33923 51105
 # B: 33732 37221"""
 
+# 27 №20168
+"""from math import dist
 
+
+def get_centroid(c):
+    r = []
+    for p in c:
+        r += [(sum(dist(p, p1) for p1 in c), p)]
+    return min(r)[1]
+
+
+a = [tuple(map(float, x.split())) for x in open('files/27_B_20168.txt')]
+c = []
+while a:
+    c += [[a.pop()]]
+    for p1 in c[-1]:
+        for p2 in a[:]:
+            if dist(p1, p2) < 1:
+                c[-1] += [p2]
+                a.remove(p2)
+print(len(c))
+cs = [kl for kl in c if len(kl) >= 20]
+cl = min(cs, key=len)
+print(get_centroid(cl))
+# A: 352342 343732
+# B: 6446 857780"""

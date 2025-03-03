@@ -44,3 +44,42 @@ while end < 1441:
         intervals.append((end - start, sum(nm for nm, st, en in data if start <= st < end or st <= start < en)))
     end += 1
 print(len(intervals), max(intervals)[1])  # 11 27785627"""
+
+
+# 26
+# №20161
+"""f = open('files/26_20161.txt')
+n = int(f.readline())
+data = sorted(list(map(int, s.split())) for s in f)  # стоимость, номер категории
+data_even = sorted([x[0] for x in data if x[1] % 2 == 0])
+data_odd = sorted([x[0] for x in data if x[1] % 2 == 1], reverse=True)
+count_even_30 = int(0.7 * len(data_even))
+discount_even = []
+discount_odd = []
+for i in range(len(data_even)):
+    if i < count_even_30:
+        new_price = data_even[i] * 0.7
+        if round(new_price) - new_price < 0.0001:
+            discount_even.append(round(new_price))
+        else:
+            discount_even.append(int(new_price))
+    else:
+        new_price = data_even[i] * 0.8
+        if round(new_price) - new_price < 0.0001:
+            discount_even.append(round(new_price))
+        else:
+            discount_even.append(int(new_price))
+
+count_odd = int(0.25 * len(data_odd))
+for i in range(len(data_odd)):
+    if i < count_odd:
+        new_price = data_odd[i] * 0.85
+        if round(new_price) - new_price < 0.0001:
+            discount_odd.append(round(new_price))
+        else:
+            discount_odd.append(int(new_price))
+    else:
+        discount_odd.append(data_odd[i])
+ans1 = sum(discount_even) + sum(discount_odd)
+ans2 = abs((sum(data_even) - sum(discount_even)) - (sum(data_odd) - sum(discount_odd)))
+print(ans1, ans2)  # 4151899 464997"""
