@@ -24,7 +24,6 @@ for mask in range(33):
     if ip != net[-1] and ip_address('200.154.184.0') != net[-1]:
         print(mask)"""
 
-
 # https://education.yandex.ru/ege/task/d1f1a287-0c17-4137-af60-9c544ea60589
 
 """from ipaddress import *
@@ -33,7 +32,6 @@ for mask in range(1, 33):
     net = ip_network(f'111.91.192.0/{mask}', 0)
     if ip_address('111.91.200.28') in net:
         print(32 - mask)  # 12"""
-
 
 # 17632
 
@@ -77,3 +75,80 @@ for mask in range(32, -1, -1):
             b = f'{ip:b}'
             if b.count('1') == 15:
                 c += 1"""
+
+# Крылов Вариант 12
+"""В терминологии сетей ТСРДР маской сети называют двоичное число, которое
+показывает, какая часть 1Р-адреса узла сети относится к адресу сети, а какая —
+к адресу узла в этой сети. Адрес сети получается в результате применения поразрядной
+конъюнкции к заданному адресу узла и маске сети.
+Сеть задана 1Р•адресом 191.239.130.3 и маской сети 255.255.A.0, где А — некоторое
+допустимое для записи маски число. Определите минимальное значение А, для
+которого для всех 1Р-адресов этой сети в двоичной записи 1Р-адреса суммарное
+количество единиц в девых двух байтах не менее суммарного количества единиц
+в правых двух байтах.
+В ответе укажите только число."""
+# Осипов Данила Сергеевич
+"""from ipaddress import *
+
+for x in range(16, 25):
+    net = ip_network(f'191.239.130.3/{x}', 0)
+    f = True
+    for i in net:
+        ip = bin(int(i))[2:]
+        if ip[:16].count('1') >= ip[16:].count('1'):
+            pass
+        else:
+            f = False
+            break
+    if f:
+        print(int(f'{str(1) * (x - 16)}{str(0) * (8 - (x - 16))}', 2))
+        print(net.netmask)  # 224
+        break"""
+# Ерофеев Ваня
+"""from ipaddress import *
+
+for x in range(16, 25):
+    net = ip_network(f'191.239.130.3/{x}', 0)
+    if all([bin(int(i))[2:][:16].count('1') >= bin(int(i))[2:][16:].count('1') for i in net]):
+        print(x - 16)
+        print(net.netmask)
+        break"""
+# DeepSeek
+"""from ipaddress import *
+
+# Перебираем возможные значения A (от 0 до 255)
+for A in range(256):
+    # Формируем маску сети
+    mask = f'255.255.{A}.0'
+
+    try:
+        # Создаём сеть с заданным IP-адресом и маской
+        net = IPv4Network(f'191.239.130.3/{mask}', strict=False)
+
+        # Проверяем условие для всех IP-адресов сети
+        condition_met = True
+        for ip in net:
+            # Преобразуем IP-адрес в 32-битное двоичное представление
+            binary = ''.join(f'{byte:08b}' for byte in ip.packed)
+
+            # Разделяем на левые и правые байты
+            left_bytes = binary[:16]  # Первые два байта
+            right_bytes = binary[16:]  # Последние два байта
+
+            # Считаем количество единиц
+            left_ones = left_bytes.count('1')
+            right_ones = right_bytes.count('1')
+
+            # Проверяем условие
+            if left_ones < right_ones:
+                condition_met = False
+                break
+
+        # Если условие выполнено для всех IP-адресов, выводим A и завершаем
+        if condition_met:
+            print(A)
+            break
+    except ValueError:
+        # Пропускаем некорректные маски
+        continue"""
+

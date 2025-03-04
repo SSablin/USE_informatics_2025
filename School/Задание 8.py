@@ -72,3 +72,19 @@ for x in product(alf, repeat=5):
                 print(x, c)  # 13000"""
 
 
+"""from itertools import product
+
+c = 0
+for x in product(sorted('СИНЕРГЯ'), repeat=6):
+    c += 1
+    s = ''.join(x)
+    if s.count('ГИРЯ') > 0:
+        print(c, s)  # 115381"""
+
+# 8 №18258
+"""from itertools import product
+c = 0
+for x in product((str(x) for x in range(12)), repeat=6):
+    if x[0] != '0' and sum(1 for i in x if int(i) % 2 == 0) == sum(1 for i in x if int(i) % 2 != 0) and x.count('11') == 1:
+        c += 1
+        print(c, x)"""

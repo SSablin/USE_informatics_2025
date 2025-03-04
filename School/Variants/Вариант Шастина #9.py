@@ -61,6 +61,16 @@ for x in range(-100, 100):
 exitonclick()
 update()"""
 
+# 8
+"""from itertools import product
+
+c = 0
+for x in product(sorted('СИНЕРГЯ'), repeat=6):
+    c += 1
+    s = ''.join(x)
+    if s.count('ГИРЯ') > 0:
+        print(c, s)  # 115381"""
+
 # 7
 """from math import log2
 print(log2(65536))  # 16
@@ -71,8 +81,6 @@ for i in range(52, 460):
     if 460 % i == 0:
         print(i)  # 92
 print((92 * s) / 8 / 1024 / 1024)  # 364"""
-
-
 
 # 13 №20220
 """from ipaddress import *
@@ -102,7 +110,6 @@ for x in range(1, 10_000):
     s7 = r7(s, 7)
     if s7.count('0') == 203:
         print(x)  # 9604"""
-
 
 # 15 №19899
 """def mod(m, n):
@@ -134,7 +141,6 @@ for x in sp:
 print(ans)  # 6720"""
 
 # 17 №19900
-
 """
 s = [int(x) for x in open('files/17_19900.txt')]
 

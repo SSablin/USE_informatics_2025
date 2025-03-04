@@ -80,7 +80,8 @@ print(c)  # 58"""
 – квадрат суммы всех повторяющихся чисел строки больше квадрата суммы всех её неповторяющихся чисел.
 В ответе запишите только число."""
 
-"""k = 0
+"""
+k = 0
 res = 0
 for i in open('files/9_18116.txt'):
     k += 1
@@ -94,3 +95,22 @@ for i in open('files/9_18116.txt'):
         if sum(pov) ** 2 > sum(nepov) ** 2:
             res += k
 print(res)  # 266374"""
+
+# 9 №18258
+"""s2 = [1, 2, 3]
+if s2 == s2.sort():
+    print(s2.sort())
+else:
+    print(sorted(s2))
+
+
+f = open('files/9_18258.txt')
+c = 0
+for s in f:
+    c += 1
+    a = list(map(int, s.split()))
+    ap = [int(x) for x in a if a.count(x) > 1]
+    a2 = [1 for x in ap if sum(int(j) for j in str(x)) % 2 == 0]
+    if a == sorted(a):
+        if sum(a2) > 1:
+            print(c, a)  # 6937"""

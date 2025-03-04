@@ -755,7 +755,6 @@ for i in range(len(s)):
 
 print(m)  # 2000031"""
 
-
 # 24 №18530
 # https://youtu.be/U65my47LR-c?si=ozowbjlOy_9haDK0&t=5636
 # Шастин
@@ -825,10 +824,8 @@ expr = findall('(?:(?:[a-z])+@(?:[a-z])+[.](?:[a-z])+)', s)
 ans = max((str(x) for x in expr), key=len)
 print(len(ans), ans)  # 230"""
 
-
 # 24
 # №19884
-
 """s = open('files/24_19884.txt').readline().strip()
 s = s.replace('-', '*').replace('6', '7').replace('8', '7').replace('9', '7').replace('**', '* *').replace('**', '* *')
 
@@ -845,3 +842,56 @@ for x in s.split():
             if t[i] == '7' or i == len(t) - 1:
                 count += cnt
 print(count)  # 30460483"""
+
+# 18285
+"""from re import findall
+s = open('files/24_18285.txt').readline().strip()
+
+expr = findall('(?:0|[1-9]\d*)(?:[*+](?:0|[1-9]\d*))*', s)
+ans = (max((str(x) for x in expr), key=len)).replace('+', '*')
+
+ans = set(ans.split('*'))
+
+print(len(ans), ans)  # 44"""
+
+# 19969
+"""Текстовый файл состоит не более чем из 10**6 символов и содержит только строчные латинские буквы, 
+а также знаки «@» и «.» . Определите максимальное количество символов в 
+непрерывной последовательности вида [буквы]@[буквы].[буквы] (например yasdamege@nasto.ballov). 
+В ответе укажите количество символов."""
+
+"""from re import findall
+
+s = open('files/24_19969.txt').readline().strip()
+
+expr = findall('(?:(?:[a-z])+@(?:[a-z])+[.](?:[a-z])+)', s)
+ans = max((str(x) for x in expr), key=len)
+print(len(ans), ans)  # 230"""
+
+# https://informatikaexpert.ru/sredi-kotoryx-para-simvolov-cd-v-ukazannom-poryadke-vstrechaetsya-rovno-160-raz/#more-19763
+"""Текстовый файл состоит из символов A, B, C, D, E и F.
+Определите максимальное количество идущих подряд символов в прилагаемом файле, 
+среди которых пара символов CD (в указанном порядке) встречается ровно 160 раз.
+Для выполнения этого задания следует написать программу."""
+# два указателя
+"""f = open('files/24_17535.txt').readline()
+l = m = 0
+kcd = 0
+for r in range(1, len(f)):
+    if f[r - 1] + f[r] == 'CD': kcd += 1
+    while kcd > 160:
+        if f[l] + f[l + 1] == 'CD': kcd -= 1
+        l += 1
+    if kcd == 160:
+        m = max(m, r - l + 1)
+print(m)  # 9712"""
+
+# сплитом
+"""f = open('files/24_17535.txt').readline()
+f = f.replace('CD', 'C D').split()
+m = 0
+for i in range(len(f) - 161):
+    a = ''.join(f[i:i + 161])
+    m = max(m, len(a))
+print(m)  # 9712"""
+

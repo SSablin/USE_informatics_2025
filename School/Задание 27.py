@@ -536,3 +536,29 @@ cl = min(cs, key=len)
 print(get_centroid(cl))
 # A: 352342 343732
 # B: 6446 857780"""
+
+# 27 №18625
+"""from math import dist
+
+
+def get_centroid(c):
+    r = []
+    for p in c:
+        r += [(sum(dist(p, p1) for p1 in c), p)]
+    return min(r)[1]
+
+
+a = [tuple(map(float, x.split())) for x in open('files/27B_18625.txt')]
+c = []
+while a:
+    c += [[a.pop()]]
+    for p1 in c[-1]:
+        for p2 in a[:]:
+            if dist(p1, p2) < 1:
+                c[-1] += [p2]
+                a.remove(p2)
+cs = [get_centroid(cl) for cl in c if len(cl) >= 30]
+
+print(int(100_000 * sum(p[0] for p in cs) / len(cs)), int(100_000 * sum(p[1] for p in cs) / len(cs)))
+# A: 515933 498987
+# B: 471077 409201"""
