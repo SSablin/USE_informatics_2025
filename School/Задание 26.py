@@ -45,7 +45,6 @@ while end < 1441:
     end += 1
 print(len(intervals), max(intervals)[1])  # 11 27785627"""
 
-
 # 26
 # №20161
 """f = open('files/26_20161.txt')
@@ -159,3 +158,4 @@ for i in range(n):
 c_killed = sum(1 for x in data if x[1] == 0)
 max_p = max(x[1] for x in data if x[1] != 0)
 print(c_killed, max_p)  # 4228 5962"""
+

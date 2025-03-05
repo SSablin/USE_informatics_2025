@@ -680,4 +680,42 @@ while a:
                 a.remove(p)
 cents = [min(c1) for c1 in c]
 print(sum(c[1][0] for c in cents) / len(cents) * 10000, sum(c[1][1] for c in cents) / len(cents) * 10000)"""
+# № 20497 (Уровень: Средний)
+"""	
 
+№ 20497 (Уровень: Средний)
+
+(М. Попков) Учёный решил провести кластеризацию некоторого множества звёзд по их 
+расположению на карте звёздного неба. Кластер звёзд – это набор звёзд (точек) на графике, 
+лежащий внутри прямоугольника. Каждая звезда обязательно принадлежит только одному из кластеров.
+Истинный край кластера – это одна из звёзд на графике, сумма расстояний от которой до 
+всех остальных звёзд кластера максимальна."""
+"""from math import dist
+
+
+def krai(cl):
+    r = []
+    for p1 in cl:
+        sm = sum(dist(p1, p2) for p2 in cl)
+        r.append([sm, p1])
+    return max(r)[1]
+
+
+f = open('files/27.19.A_20497.txt')
+a = [tuple(map(float, s.replace(',', '.').split())) for s in f]
+c = []
+while a:
+    c += [[a.pop()]]
+    for p1 in c[-1]:
+        for p2 in a.copy():
+            if dist(p1, p2) < 0.5:  # A - 0.5 B - 4
+                c[-1].append(p2)
+                a.remove(p2)
+cs = [krai(cl) for cl in c if len(cl) > 10]
+print([len(cl) for cl in c])
+print(len(cs))
+px = sum(x for x, y in cs) / len(cs) * 10_000
+py = sum(y for x, y in cs) / len(cs) * 10_000
+print(int(px), int(py))
+# A: 13258 2656
+# B: -209434 474989"""
