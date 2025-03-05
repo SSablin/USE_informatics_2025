@@ -562,3 +562,122 @@ cs = [get_centroid(cl) for cl in c if len(cl) >= 30]
 print(int(100_000 * sum(p[0] for p in cs) / len(cs)), int(100_000 * sum(p[1] for p in cs) / len(cs)))
 # A: 515933 498987
 # B: 471077 409201"""
+
+# 27 №19647
+# Шастин
+"""from math import *
+
+
+def centroid(cl):
+    res = []
+    for p1 in cl:
+        s = sum([dist(p1, p2) for p2 in cl])
+        res.append([s, p1])
+    return min(res)[1]
+
+
+def centr(cl, a):
+    r = []
+    for p in a:
+        r.append((sum(dist(p, p1) for p1 in cl), p))
+    return min(r)[1]
+
+
+fA = open('files/27_A_19647.txt')
+rA = float(fA.readline().strip().replace(',', '.'))
+aA = [tuple(map(float, x.replace(',', '.').split())) for x in fA]
+cA = [[], []]
+for x, y in aA:
+    if x < 4:
+        cA[0].append([x, y])
+    else:
+        cA[1].append([x, y])
+csA = [centroid(cl) for cl in cA]
+print(csA)
+print(*[10_000 * x for x in centr(csA, aA)])
+
+fB = open('files/27_B_19647.txt')
+rB = float(fB.readline().strip().replace(',', '.'))
+aB = [tuple(map(float, x.replace(',', '.').split())) for x in fB]
+cB = [[], [], []]
+for x, y in aB:
+    if x < 10.5:
+        cB[0].append([x, y])
+    elif y < 19:
+        cB[1].append([x, y])
+    else:
+        cB[2].append([x, y])
+csB = [centroid(cl) for cl in cB]
+print(csB)
+print(*[10_000 * x for x in centr(csB, aB)])
+# A: 23392 26712
+# B: 101947 210484"""
+
+# 27 №19647
+"""from math import dist
+from turtle import *
+
+
+def visual():
+    up()
+    tracer(0)
+    for cluster, colour in zip(c, ('green', 'red', 'blue')):
+        for x, y in cluster:
+            goto(x * 50, y * 50)
+            dot(3, colour)
+    done()
+
+def centroid(c):
+    r = []
+    for p in c:
+        r.append((sum(dist(p, p1) for p1 in c), p))
+    return min(r)[1]
+
+
+def centr(c):
+    r = []
+    for p in a_2:
+        r.append((sum(dist(p, p1) for p1 in c), p))
+    return min(r)[1]
+
+
+f = open('files/27_A_19647.txt')
+r = float(f.readline().strip().replace(',', '.'))
+a = [tuple(map(float, x.replace(',', '.').split())) for x in f]
+a_2 = a.copy()
+c = []
+while a:
+    c += [[a.pop()]]
+    for p1 in c[-1]:
+        for p2 in a[:]:
+            if dist(p1, p2) < r:
+                c[-1] += [p2]
+                a.remove(p2)
+cs = [centroid(cl) for cl in c]
+print(*[10_000 * x for x in centr(cs)])
+# A: 23392 26712
+# B: 101947 210484
+visual()"""
+
+# № 17882 Демоверсия 2025 (Уровень: Базовый)
+# from Shastin's comments
+# +20% speed boost
+"""from math import dist
+
+a = [list(map(float, x.split())) for x in open('files/27_A_17882.txt')]
+c = []
+while a:
+    c += [[[0, a.pop()]]]
+    for s, p1 in c[-1]:
+        for p in a:
+            if dist(p1, p) < 1:
+                s = 0
+                for n in c[-1]:
+                    d = dist(p, n[1])
+                    n[0] += d
+                    s += d
+                c[-1].append([s, p])
+                a.remove(p)
+cents = [min(c1) for c1 in c]
+print(sum(c[1][0] for c in cents) / len(cents) * 10000, sum(c[1][1] for c in cents) / len(cents) * 10000)"""
+

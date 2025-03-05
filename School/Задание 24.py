@@ -895,3 +895,100 @@ for i in range(len(f) - 161):
     m = max(m, len(a))
 print(m)  # 9712"""
 
+"""
+№ 19717 (Уровень: Средний)
+(М. Попков) Текстовый файл состоит из символов A, E, G, I, L, M и R.
+Определите в прилагаемом файле максимальное количество идущих подряд символов 
+(длину непрерывной подпоследовательности), 
+среди которых символ M встречается не более 278 раз."""
+"""f = open('files/24.5_19717.txt').readline().strip()
+
+l = m = 0
+km = 0
+for r in range(len(f)):
+    if f[r] == 'M':
+        km += 1
+    while km > 278:
+        if f[l] == 'M':
+            km -= 1
+        l += 1
+    if km <= 278:
+        m = max(m, r - l + 1)
+print(m)  # 2473
+
+s = open('files/24.5_19717.txt').readline().strip()
+max_length = 0
+left = 0
+count_DE = 0
+
+for right in range(len(s)):
+    if s[right] == 'M':
+        count_DE += 1
+
+    while count_DE > 278:
+        if s[left] == 'M':
+            count_DE -= 1
+        left += 1
+
+    if count_DE <= 278:
+        max_length = max(max_length, right - left + 1)
+print(max_length)  # 2473"""
+
+"""№ 19489 (Уровень: Средний)
+(Л. Шастин) Текстовый файл состоит из символов F, S и W. 
+Определите в прилагаемом файле максимальное количество идущих подряд символов, 
+среди которых подстрока WWF встречается не более 120 раз, а подстрока WSFWW не встречается совсем.
+Для выполнения этого задания следует написать программу."""
+# 1
+"""f = open('files/24_19489.txt').readline().strip()
+m = 0
+for s in f.split('WSFWW'):
+    if len(s) > m:
+        l = 0
+        c_wwf = 0
+        for r in range(2, len(s)):
+            if s[r - 2] == 'W' and s[r - 1] == 'W' and s[r] == 'F':
+                c_wwf += 1
+            while c_wwf > 120:
+                if s[l - 2] == 'W' and s[l - 1] == 'W' and s[l] == 'F':
+                    c_wwf -= 1
+                l += 1
+            if c_wwf <= 120:
+                m = max(m, r - l + 1)
+
+print(4 + m + 4)  # 3080"""
+# 2
+"""f = open('files/24_19489.txt').readline().strip()
+m = 0
+f = f.replace('WSFWW', 'WSFW SFWW')
+for s in f.split():
+    if len(s) > m:
+        l = 0
+        c_wwf = 0
+        for r in range(2, len(s)):
+            if s[r - 2] == 'W' and s[r - 1] == 'W' and s[r] == 'F':
+                c_wwf += 1
+            while c_wwf > 120:
+                if s[l - 2] == 'W' and s[l - 1] == 'W' and s[l] == 'F':
+                    c_wwf -= 1
+                l += 1
+            if c_wwf <= 120:
+                m = max(m, r - l + 1)
+
+print(m)  # 3080"""
+
+# Шастин
+"""s = open('files/24_19489.txt').readline().strip()
+l = k = m = 0
+for r in range(2, len(s)):
+    if s[r-2:r+1] == 'WWF':
+        k += 1
+    if s[r-4:r+1] == 'WSFWW':
+        l = r - 3
+        k = 'WWF' in s[l:r+1]
+    while k > 120:
+        if s[l:l+3] == 'WWF':
+            k -= 1
+        l += 1
+    m = max(m, r - l + 1)
+print(m)  # 3080"""

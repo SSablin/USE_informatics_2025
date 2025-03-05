@@ -123,3 +123,39 @@ if (m - my + cp) in sp:
     my += m - my
 
 print(cy, my)"""
+
+# 26 №19599
+"""from math import ceil
+f = open('files/26_19599.txt')
+n = int(f.readline())
+data = []
+for s in f:
+    data.append(list(map(int, list(s.split()))))
+for x in data:
+    x[0] = x[0] - 1
+    for j in range(2, 6):
+        x[j] = x[j] - 1
+data.sort()
+
+# n power support opponets(3)
+for i in range(n):
+    if data[i][1] != 0:
+        if data[data[i][2]][1] != 0:
+            data[data[i][2]][1] += data[i][1]
+        for j in range(3, 6):
+            if data[data[i][j]][1] != 0:
+                if data[i][1] > data[data[i][j]][1]:
+                    data[data[i][j]][1] = 0
+                    data[i][1] = ceil(data[i][1] - data[i][1] * 1/3)
+                if data[i][1] == data[data[i][j]][1]:
+                    data[i][1] = data[data[i][j]][1] = 0
+                    break
+                if data[i][1] < data[data[i][j]][1]:
+                    data[i][1] = 0
+                    data[data[i][j]][1] = ceil(data[data[i][j]][1] - data[data[i][j]][1] * 1/3)
+                    break
+            else:
+                pass
+c_killed = sum(1 for x in data if x[1] == 0)
+max_p = max(x[1] for x in data if x[1] != 0)
+print(c_killed, max_p)  # 4228 5962"""
