@@ -128,3 +128,18 @@ for i in range(2030):
 print((sp[2024] - 3 * sp[2023]) // sp[2022])  #  4092528
 '''
 
+# 20490
+"""m = 0
+for x in range(1, 2006):
+    c1=0
+    c4=0
+    a = 4 ** 163 * 5 + 12 ** 62 - x
+    while a > 0:
+        if a % 5 == 1:
+            c1+=1
+        elif a % 5 == 4:
+            c4+=1
+        a = a // 5
+    if c1 < c4:
+        m = max(m, x)
+print(m)  # 2000"""

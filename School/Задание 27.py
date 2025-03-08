@@ -680,11 +680,9 @@ while a:
                 a.remove(p)
 cents = [min(c1) for c1 in c]
 print(sum(c[1][0] for c in cents) / len(cents) * 10000, sum(c[1][1] for c in cents) / len(cents) * 10000)"""
+
 # № 20497 (Уровень: Средний)
-"""	
-
-№ 20497 (Уровень: Средний)
-
+"""№ 20497 (Уровень: Средний)
 (М. Попков) Учёный решил провести кластеризацию некоторого множества звёзд по их 
 расположению на карте звёздного неба. Кластер звёзд – это набор звёзд (точек) на графике, 
 лежащий внутри прямоугольника. Каждая звезда обязательно принадлежит только одному из кластеров.
@@ -719,3 +717,33 @@ py = sum(y for x, y in cs) / len(cs) * 10_000
 print(int(px), int(py))
 # A: 13258 2656
 # B: -209434 474989"""
+
+# 27 Горбачев5
+"""from math import dist
+
+data = [tuple(map(float, s.replace(',', '.').split())) for s in open('files/27B_горбачев5.txt')]
+
+# DBSCAN
+clusters = []
+while data:
+    clusters.append([data.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data.copy():
+            if dist(p1, p2) <= 1:
+                clusters[-1].append(p2)
+                data.remove(p2)
+clusters = [cl for cl in clusters if len(cl) > 30]
+print([len(cl) for cl in clusters])
+
+
+def centroid(cl):
+    r = []
+    for p1 in cl:
+        r.append([sum(dist(p1, p2) for p2 in cl), p1])
+    return min(r)[1]
+
+
+centr = [centroid(cl) for cl in clusters]
+print(int(sum(x for x, y in centr) / len(centr) * 10000), int(sum(y for x, y in centr) / len(centr) * 10000))"""
+# A: 15615 19452
+# B: 2415 3237

@@ -152,3 +152,14 @@ for A in range(256):
         # Пропускаем некорректные маски
         continue"""
 
+# №18445 Сергей Горбачев
+"""from ipaddress import *
+
+k = 0
+net = ip_network('140.116.194.0/255.255.240.0', 0)
+for ip in net:
+    b = f'{ip:b}'
+    if b[7] == '0' and b[15] == '0' and b[23] == '0' and b[31] == '0':
+        k += 1
+        print(k, ip)
+print(k)"""

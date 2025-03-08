@@ -159,3 +159,24 @@ c_killed = sum(1 for x in data if x[1] == 0)
 max_p = max(x[1] for x in data if x[1] != 0)
 print(c_killed, max_p)  # 4228 5962"""
 
+# 26_горбачев5
+"""
+f = open('files/26_горбачев5.txt')
+N, M, K = map(int, f.readline().split())
+mx = 0
+s = [M + 1] * (K + 1)
+
+for i in f:
+    r, m = map(int, i.split())
+    s[m] = min(s[m], r)
+
+for i in range(1, K - 3):
+    x = min(s[i], s[i + 1], s[i + 2], s[i + 3])
+    mx = max(mx, x)
+
+print(mx - 1)
+
+for i in range(1, K - 3):
+    if min(s[i], s[i + 1], s[i + 2], s[i + 3]) == mx:
+        print(i, i+1, i+2, i+3)"""
+# 9717 5198

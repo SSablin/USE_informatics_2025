@@ -992,3 +992,71 @@ for r in range(2, len(s)):
         l += 1
     m = max(m, r - l + 1)
 print(m)  # 3080"""
+
+# Горбачев5
+# 24
+"""Задание 24 .
+Текстовый файл состоит из десятичных цифр, знаков «+» и «*» (сложения и умножения).
+Определите максимальное количество символов в непрерывной последовательности,
+являющейся корректным арифметическим выражением с целыми неотрицательными
+числами (без знака), значение которого равно 100. В этом выражении никакие два
+знака арифметических операций не стоят рядом, порядок действий определяется по
+правилам математики. В записи чисел отсутствуют незначащие (ведущие) нули.
+В ответе укажите количество символов."""
+
+"""s = open('files/24_горбачев5.txt').readline().strip()
+for i in ('++', '**', '*+', '+*'):
+    s = s.replace(i, ' ')
+
+m = ''
+for c in s.split():
+    if len(c) > len(m):
+        for i in range(len(c) - 1):
+            if c[i] not in '*+' and c[i] + c[i + 1] not in (f'0{i}' for i in range(10)):
+                sub = ''
+                for j in range(i, len(c)):
+                    sub += c[j]
+                    if sub[-1] not in '*+' and eval(sub) == 100:
+                        m = max(m, sub, key=len)
+print(len(m), m)  # 80"""
+
+# №19938
+"""s = open('files/24_19938.txt').readline()
+l = m = 0
+c_z = 0
+for r in range(len(s)):
+    if s[r] == 'Z':
+        c_z += 1
+    while c_z > 4 or s[l] == '0':
+        if s[l] == 'Z':
+            c_z -= 1
+        l += 1
+    if int(s[l:r + 1], 36) % 36 == 0:
+        m = max(m, r - l + 1)
+
+print(m)  # 652"""
+
+# №20394
+"""s = open('files/24_20394.txt').readline()
+l = 0
+c_dec = 0
+m = ''
+for r in range(2, len(s)):
+    if s[r - 2] + s[r - 1] + s[r] == 'DEC':
+        c_dec += 1
+    while c_dec > 75:
+        if s[l] + s[l + 1] + s[l + 2] == 'DEC':
+            c_dec -= 1
+        l += 1
+    if c_dec == 75:
+        m = max(m, s[l:r + 1], key=len)
+print(len(m), m)  # 787"""
+
+"""s = open('files/24_20394.txt').readline()
+s = s.replace('DEC', 'DE EC').split()
+m = 0
+for i in range(len(s) - 76):
+    a = ''.join(s[i:i+76])
+    m = max(m, len(a) - 75)
+print(m)  # 787"""
+
