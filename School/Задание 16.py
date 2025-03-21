@@ -143,3 +143,13 @@ for x in range(1, 2006):
     if c1 < c4:
         m = max(m, x)
 print(m)  # 2000"""
+
+# 16
+"""def f(n):
+    if n > 2000:
+        return 16
+    else:
+        return 2 * f(n + 3)
+
+
+print(f(50) / f(110))  # 1048576"""

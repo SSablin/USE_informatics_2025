@@ -1,10 +1,118 @@
-# 13 №19843
+# 2 №19637
+"""from itertools import *
 
+
+def f(x, y, w, z):
+    return (z <= x) and ((x and (y == (not z))) <= w)
+
+
+for a1, a2, a3, a4, a5 in product([0, 1], repeat=5):
+    table = {(a1, 1, 1, a2), (0, 0, a3, a4), (a5, 0, 0, 0)}
+    for p in permutations('xywz'):
+        if [f(**dict(zip(p, r))) for r in table] == [0, 0, 0]:
+            print(*p)  # z w y x"""
+
+# 5 №19639
+"""m = 0
+for i in range(1, 1000):
+    n = bin(i)[2:]
+    if n.count('0') % 2 == 0:
+        n = '1' + n + '1'
+    else:
+        n = '10' + n
+    r = int(n, 2)
+    if r < 100:
+        m = max(m, r)
+print(m)  # 97"""
+
+# 8 №19480
+"""from itertools import permutations
+
+c = 0
+for x in set(permutations('ПАРИЖАНКА')):
+    s = ''.join(x).replace('И', 'А')
+    if s.count('АА') == 1 and s.count('ААА') == 0:
+        c += 1
+        print(c, s)  # 28800"""
+
+# 12 №19483
+"""for n in range(4, 10_000):
+    s = '2' + '5' * n
+    while '25' in s or '355' in s or '555' in s:
+        if '25' in s:
+            s = s.replace('25', '5', 1)
+        if '355' in s:
+            s = s.replace('355', '522', 1)
+        if '555' in s:
+            s = s.replace('555', '3', 1)
+    if s.count('2') == 10:
+        print(n)  # 681
+        break"""
+
+# 13 №19843
 """from ipaddress import *
 net = ip_network('158.214.121.40/255.255.255.224', 0)
 for ip in net.hosts():
     print(str(ip).replace('.', ''))
     break  # 15821412133"""
+
+# 14 №19484
+"""def i27(x):
+    s = []
+    while x > 0:
+        s.append(x % 27)
+        x //= 27
+    return s[::-1]
+
+
+x = 5 * 729 ** 2024 + 3 * 243 ** 1413 - 7 * 81 ** 169 - 2 * 9 ** 107 + 3017
+x7 = i27(x)
+print(sum(x for x in x7 if x % 2 == 0 and x <= 25))  # 26"""
+
+# 15 №19485
+"""def DEL(n, m):
+    if n % m == 0:
+        return True
+    return False
+
+
+c = 0
+B = [x for x in range(170, 221)]
+for a in range(1, 500):
+    f = True
+    for x in range(1, 500):
+        if not (DEL(x, a) or ((x in B) <= (not DEL(x, 24)))):
+            f = False
+            break
+    if f:
+        c += 1
+print(c)  # 8"""
+
+# 16 №19597
+"""def f(n):
+    if n < 15:
+        return 4
+    if n >= 15 and n % 3 == 0:
+        return f(2 * n / 3) + n - 1
+    elif n % 3 != 0:
+        return f(n - 1) + 3
+
+for n in range(10000):
+    f(n)
+    if f(n) == 251:
+        print(n)  # 96"""
+
+# 17 №19486
+"""s = [int(x) for x in open('files/17_19486.txt')]
+
+c_7 = sum(1 for x in s if abs(x) % 10 == 7)
+
+ans = []
+for i in range(len(s) - 1):
+    if (s[i] == abs(s[i]) and s[i + 1] != abs(s[i + 1])) or (s[i] != abs(s[i]) and s[i + 1] == abs(s[i + 1])):
+        if (s[i] + s[i + 1]) < c_7:
+            ans.append(s[i] + s[i + 1])
+print(len(ans), max(ans))  # 2452 962"""
 
 # 23 №19487
 """def f(start, end, c):
@@ -90,7 +198,6 @@ c_killed = sum(1 for x in data if x[1] == 0)
 max_p = max(x[1] for x in data if x[1] != 0)
 print(c_killed, max_p)  # 4228 5962"""
 
-
 # 27 №19647
 """from math import dist
 from turtle import *
@@ -136,7 +243,6 @@ print(*[10_000 * x for x in centr(cs)])
 # A: 23392 26712
 # B: 101947 210484
 visual()"""
-
 
 # Шастин
 """from math import *

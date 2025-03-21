@@ -1,3 +1,23 @@
+# 14 №20808
+"""def i7(a):
+    s = ''
+    while a > 0:
+        s = str(a % 7) + s
+        a //= 7
+    return s
+
+
+m = 0
+for x in range(1, 2031):
+    a = 7 ** 170 + 7 ** 100 - x
+    a7 = i7(a)
+    m = max(m, a7.count('0'))
+print(m)  # 73
+for x in range(1, 2031):
+    a = 7 ** 170 + 7 ** 100 - x
+    a7 = i7(a)
+    if a7.count('0') == 73:
+        print(x)  # 1715"""
 # 23 №17877
 """def f(x, end):
     if x == end: return 1
