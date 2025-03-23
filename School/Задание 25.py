@@ -45,3 +45,10 @@ for n in range(112_500_000, 112_550_000):
 # 112523549
 # 112534952
 
+# 25 шастин10
+"""from fnmatch import fnmatch
+
+for i in range(4321, 10**9, 4321):
+    if fnmatch(str(i), '34*56?7'):
+        if str(eval((''.join(f'{x}*' for x in map(int, str(i))))[:-1]))[-1] == '0':
+            print(i, eval((''.join(f'{x}*' for x in map(int, str(i))))[:-1]))"""
