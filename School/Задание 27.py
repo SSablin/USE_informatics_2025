@@ -785,3 +785,276 @@ for p1 in pl:
     res.append([cnt, sum(p1), p1])
 x, y = sorted(res)[-1][-1]
 print(x * 10**9, y * 10 ** 9)"""
+
+# 20132
+# В. Лашин
+"""from math import dist
+
+clasters = []
+for point in open('files/27B_1_20132.txt'):
+    point = list(map(float, point.replace(',', '.').split()))
+    clasters.append([point])
+    for claster in clasters[:-1]:
+        if any(dist(point, claster_point) < 1 for claster_point in claster):
+            clasters[-1] += claster
+            clasters.remove(claster)
+
+
+def extreme_point(claster_1, claster_2):
+    distances = []
+    for point_1 in claster_1:
+        for point_2 in claster_2:
+            distances.append([dist(point_1, point_2), [point_1, point_2]])
+    return min(distances)[1]
+
+
+extreme_points = [extreme_point(clasters[0], clasters[1]), extreme_point(clasters[0], clasters[2]),
+                  extreme_point(clasters[1], clasters[2])]
+# print(len(clasters))
+print(abs(int(sum(p1[0] + p2[0] for p1, p2 in extreme_points) / (2 * len(extreme_points)) * 10000)), end=' ')
+print(abs(int(sum(p1[1] + p2[1] for p1, p2 in extreme_points) / (2 * len(extreme_points)) * 10000)))
+"""
+# ОТ ХАОСА К ПОРЯДКУ | 27 ЗАДАНИЕ КЕГЭ
+# https://vkvideo.ru/video-225440929_456239106
+# Максим Попков
+# 1
+"""from math import dist
+
+# file = open('files/27.1.A.txt')
+# k1, k2 = [], []
+# for line in file:
+#     x, y = map(float, line.split())
+#     if x > 2:
+#         k2.append([x, y])
+#     else:
+#         k1.append([x, y])
+file = open('files/27.1.B.txt')
+k1, k2, k3 = [], [], []
+for line in file:
+    x, y = map(float, line.split())
+    if x > 4:
+        k2.append([x, y])
+    elif y > 2:
+        k1.append([x, y])
+    else:
+        k3.append([x, y])
+
+
+def centr(cluster):
+    min_sum_dist = float('inf')
+    final_centroid = []
+    for centroid in cluster:
+        sum_dist = 0
+        for point in cluster:
+            sum_dist += dist(point, centroid)
+        if sum_dist < min_sum_dist:
+            min_sum_dist = sum_dist
+            final_centroid = centroid
+    return final_centroid
+
+
+centroids = [centr(cluster) for cluster in [k1, k2, k3]]
+px = int(sum(x for x, y in centroids) / len(centroids) * 10_000)
+py = int(sum(y for x, y in centroids) / len(centroids) * 10_000)
+print(px, py)
+# 17314 11271
+# 29257 21424"""
+
+# 5
+"""from math import dist
+
+def center(cluster):
+    min_sum_dist = float('inf')
+    final_centroid = []
+    for centroid in cluster:
+        sum_dist = sum(dist(point, centroid) for point in cluster)
+        if sum_dist < min_sum_dist:
+            min_sum_dist = sum_dist
+            final_centroid = centroid
+    return final_centroid
+
+file = open('files/27.5.A.txt')
+# k1, k2, k3 = [], [], []
+# for line in file:
+#     x, y = map(float, line.split())
+#     if x < 0.4:
+#         k1.append([x, y])
+#     elif y > 1:
+#         k2.append([x, y])
+#     else:
+#         k3.append([x, y])
+k1, k2, k3, k4, k5 = [], [], [], [], []
+for line in file:
+    x, y = map(float, line.split())
+    if x > 5:
+        k1.append([x, y])
+    elif y < -1.2:
+        k2.append([x, y])
+    elif x < 0:
+        k3.append([x, y])
+    elif y > 3:
+        k4.append([x, y])
+    else:
+        k5.append([x, y])
+
+clusters = [k1, k2, k3, k4, k5]
+clusters.sort(key=len)
+del clusters[0]
+
+centroids = [center(cluster) for cluster in clusters]
+px = int(sum(x for x, y in centroids) / len(centroids) * 10_000)
+py = int(sum(y for x, y in centroids) / len(centroids) * 10_000)
+print(px, py)
+# 5692 -11075
+# 15394 4837"""
+
+
+# 8
+"""def dist(p1, p2):
+    return abs(p2[0] - p1[0]) + abs(p2[1] - p1[1])
+def kray(cluster):
+    max_dum_dist = 0
+    final_kray = []
+    for kr in cluster:
+        sum_dist = sum(dist(kr, point) for point in cluster)
+        if sum_dist > max_dum_dist:
+            max_dum_dist = sum_dist
+            final_kray = kr
+    return final_kray
+
+# file = open('files/27.8.A.txt')
+# k1, k2 = [], []
+# for line in file:
+#     x, y = map(float, line.split())
+#     if x > 1.5:
+#         k1.append([x, y])
+#     else:
+#         k2.append([x, y])
+#
+# kraya = [kray(cluster) for cluster in [k1, k2]]
+
+file = open('files/27.8.B.txt')
+k1, k2, k3 = [], [], []
+for line in file:
+    x, y = map(float, line.split())
+    if y < -x - 4:
+        k1.append([x, y])
+    elif y < x + 4.8:
+        k2.append([x, y])
+    else:
+        k3.append([x, y])
+
+kraya = [kray(cluster) for cluster in [k1, k2, k3]]
+
+tx = int(sum(x for x, y in kraya) / len(kraya) * 10_000)
+ty = int(sum(y for x, y in kraya) / len(kraya) * 10_000)
+print(tx, ty)
+# 3071 -2558
+# -40637 14149"""
+
+# 10
+"""from math import dist
+
+def kray(cluster):
+    max_sum_dist = 0
+    final_kray = []
+    for kr in cluster:
+        sum_dist = sum(dist(kr, point) for point in cluster)
+        if sum_dist > max_sum_dist:
+            max_sum_dist = sum_dist
+            final_kray = kr
+    return final_kray
+
+# file = open('files/27.10.A.txt')
+# cl = [[] for i in range(3)]
+# for line in file:
+#     x, y = map(float, line.split())
+#     if x > 0:
+#         cl[0].append([x, y])
+#     elif y > -1:
+#         cl[1].append([x, y])
+#     else:
+#         cl[2].append([x, y])
+file = open('files/27.10.B.txt')
+cl = [[] for i in range(5)]
+for line in file:
+    x, y = map(float, line.split())
+    if y > 1 and x < -2:
+        cl[0].append([x, y])
+    elif y > 1 and y > x + 0.4:
+        cl[1].append([x, y])
+    elif x > 1 and y > -2.4:
+        cl[2].append([x, y])
+    elif x > 1 and y < -2.4:
+        cl[3].append([x, y])
+    else:
+        cl[4].append([x, y])
+
+kraya = [kray(cluster) for cluster in cl]
+tx = int(sum(x for x, y in kraya) / len(kraya) * 10000)
+ty = int(sum(y for x, y in kraya) / len(kraya) * 10000)
+print(tx, ty)
+# -11053 -1583
+# 1488 5057"""
+
+# 15
+"""from math import dist
+
+def centr(cluster):
+    min_sum_dist = float('inf')
+    final_centroid = []
+    for centroid in cluster:
+        sum_dist = sum(dist(centroid, point) for point in cluster)
+        if sum_dist < min_sum_dist:
+            min_sum_dist = sum_dist
+            final_centroid = centroid
+    return final_centroid
+
+# file = open('files/27.15.A.txt')
+# cl = [[] for i in range(2)]
+# anomaly = []
+# for line in file:
+#     x, y = map(float, line.split())
+#     if (-2 < y < 2 and -4 < x < 4) or (-22 < y < -16 and -16 < x < -12) or (0 < y < 4 and 76 < x < 84):
+#         anomaly.append([x, y])
+#     elif y > 0:
+#         cl[0].append([x, y])
+#     else:
+#         cl[1].append([x, y])
+
+file = open('files/27.15.B.txt')
+cl = [[] for i in range(8)]
+anomaly = []
+for line in file:
+    x, y = map(float, line.split())
+    if (y > 60 or (30 < y < 32 and 20 < x < 23) or (-1 < x < 1 and 2 < y < 6) or
+            (-12 < y < -8 and 9 < x < 11) or (-12 < y < -8 and 26 < x < 28)):
+        anomaly.append([x, y])
+    elif y < -10:
+        if x < 9.5:
+            cl[0].append([x, y])
+        else:
+            cl[1].append([x, y])
+    elif y < 6:
+        if x > 13:
+            cl[2].append([x, y])
+        else:
+            cl[3].append([x, y])
+    elif y < 26:
+        if x > 16.5:
+            cl[4].append([x, y])
+        else:
+            cl[5].append([x, y])
+    elif y < 40:
+        cl[6].append([x, y])
+    else:
+        cl[7].append([x, y])
+
+centroids = [centr(cluster) for cluster in cl]
+px = int(sum(x for x, y in centroids) / len(centroids) * 10_000)
+py = int(sum(y for x, y in centroids) / len(centroids) * 10_000)
+print(px, py)
+# 323977 -87831
+# 131932 104997"""
+
+

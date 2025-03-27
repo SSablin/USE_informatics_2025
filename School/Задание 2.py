@@ -24,6 +24,3 @@ for a1, a2, a3, a4, a5 in product([0, 1], repeat=5):
 #
 #     Мы проверяем, что этот список равен [0, 0, 0], что соответствует заданным значениям функции FF в таблице.
 """
-i = 12345
-print((''.join(f'{x}*' for x in map(int, str(i))))[:-1])
-print(eval((''.join(f'{x}*' for x in map(int, str(i))))[:-1]))

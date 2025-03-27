@@ -1094,3 +1094,31 @@ for i in range(4, len(s)):
     if len(pos) >= 170:
         m = min(m, i - pos[-170] + 1)
 print(m)  # 2545440"""
+
+# 24 №19938
+"""s = open('files/24_19938.txt').readline()
+l = m = 0
+c_z = 0
+for r in range(len(s)):
+    if s[r] == 'Z':
+        c_z += 1
+    while c_z > 4 or s[l] == '0':
+        if s[l] == 'Z':
+            c_z -= 1
+        l += 1
+    if int(s[l:r + 1], 36) % 36 == 0:
+        m = max(m, r - l + 1)
+
+print(m)  # 652"""
+
+"""m = 0
+s = open('files/24_19938.txt').readline()
+s = s.replace('Z', 'Z Z')
+s = s.split()
+sub = ''
+for i in range(len(s)):
+    sub = s[i] + s[i + 1] + s[i + 2]
+    m = max(m, len(sub))
+    sub = ''
+print(m - 2)
+"""
