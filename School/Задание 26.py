@@ -271,7 +271,7 @@ for i in range(m):
 print(ans)"""
 
 # Кабанов
-f = open('files/26_20910.txt')
+"""f = open('files/26_20910.txt')
 N, M, K = [int(x) for x in f.readline().split()]
 print(N, M, K)
 min_ryad = [M + 1] * (K + 1)
@@ -286,3 +286,5 @@ for mesto in range(1, K):
     m.append(r)
 print(m)
 print(max(m))  # 21028"""
+
+# №9756

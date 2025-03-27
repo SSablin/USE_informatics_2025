@@ -1,5 +1,4 @@
 # № 18150 (Уровень: Базовый)
-
 """clastersA = [[], []]
 
 for s in open('files/27A_18150.txt'):

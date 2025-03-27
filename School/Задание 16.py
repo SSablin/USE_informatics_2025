@@ -153,3 +153,25 @@ print(m)  # 2000"""
 
 
 print(f(50) / f(110))  # 1048576"""
+
+# 17557
+"""from functools import lru_cache
+@lru_cache(None)
+def f(n):
+    if n == 1:
+        return 1
+    if n > 1:
+        return 2 * n * f(n - 1)
+
+for i in range(2025):
+    f(i)
+
+print((f(2024) // 16 - f(2023)) / f(2022))"""
+
+"""f = [0]
+for n in range(1, 2025):
+    if n == 1:
+        f.append(1)
+    if n > 1:
+        f.append(2 * n * f[n - 1])
+print((f[2024] // 16 - f[2023]) / f[2022])"""
