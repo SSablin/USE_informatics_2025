@@ -1122,3 +1122,10 @@ for i in range(len(s)):
     sub = ''
 print(m - 2)
 """
+
+# 24_горбачев6
+"""from re import *
+s = open('files/24_горбачев6.txt').readline()
+expr = findall('(?:[1-9, AB]+)(?:[-.+*][1-9, AB]+)+', s)
+ans = max(expr, key=len)
+print(len(ans), ans)   # 53"""

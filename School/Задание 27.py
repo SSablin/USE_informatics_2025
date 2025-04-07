@@ -1056,4 +1056,47 @@ print(px, py)
 # 323977 -87831
 # 131932 104997"""
 
+# 27_горбачев6
+"""def dist(p1, p2):
+    return max(abs(p2[0] - p1[0]), abs(p2[1] - p1[1]))
 
+
+def density(cl):
+    res = []
+    for p1 in cl:
+        c = 0
+        for p2 in cl:
+            if dist(p1, p2) < 1:
+                c += 1
+        res.append(c)
+    return sum(res) / len(res)
+
+
+data = list(list(map(float, s.replace(',', '.').split())) for s in open('files/27A_горбачев6.txt'))
+clusters = []
+while data:
+    clusters.append([data.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data.copy():
+            if dist(p1, p2) <= 0.5:
+                clusters[-1].append(p2)
+                data.remove(p2)
+
+# from turtle import *
+# tracer(0)
+# screensize(3000, 3000)
+# up()
+# colors = ['red', 'green', 'blue'] + ['black'] * 10
+# for cl, color in zip(clusters, colors):
+#     for x, y in cl:
+#         goto(x * 100, y * 100)
+#         dot(10, color)
+# done()
+
+clusters = [cl for cl in clusters if len(cl) >= 30]
+print([len(cl) for cl in clusters])
+density_cl = [density(cl) for cl in clusters]
+print(density_cl)
+print(int(max(density_cl) * 1000), int((sum(density_cl) / len(density_cl)) * 1000))
+# A: 35954 32067
+# B: 2361060 2235322"""

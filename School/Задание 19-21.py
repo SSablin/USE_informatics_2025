@@ -124,3 +124,94 @@ for s in range(20, 100):
 print('19)', [s for s in range(20, 100) if f(s, 2)])
 print('20)', [s for s in range(20, 100) if not f(s, 1) and f(s, 3)])
 print('21)', [s for s in range(20, 100) if not f(s, 2) and f(s, 4)])"""
+
+# горбачев6
+# 19
+"""def g(s1, s2, h, p):
+    if s1 + s2 >= 132 and h == 2:
+        return True
+    if s1 + s2 >= 132 and h != 2:
+        return False
+    if s1 + s2 < 132 and h == 2:
+        return False
+    if p < 1:
+        if h % 2 != 0:  # Полина
+            return (g(s1 + 2, s2, h + 1, p) or g(s1, s2 + 2, h + 1, p) or
+                    g(s1 * 2, s2, h + 1, p) or g(s1, s2 * 2, h + 1, p) or
+                    g(s1 * 3, s2, h + 1, 1) or g(s1, s2 * 3, h + 1, 1))
+        else:  # Вика
+            return (g(s1 + 2, s2, h + 1, p) and g(s1, s2 + 2, h + 1, p) and
+                    g(s1 * 2, s2, h + 1, p) and g(s1, s2 * 2, h + 1, p) and
+                    g(s1 * 3, s2, h + 1, 1) and g(s1, s2 * 3, h + 1, 1))
+    else:
+        if h % 2 != 0:  # Полина
+            return (g(s1 + 2, s2, h + 1, p) or g(s1, s2 + 2, h + 1, p) or
+                    g(s1 * 2, s2, h + 1, p) or g(s1, s2 * 2, h + 1, p))
+        else:  # Вика
+            return (g(s1 + 2, s2, h + 1, p) and g(s1, s2 + 2, h + 1, p) and
+                    g(s1 * 2, s2, h + 1, p) and g(s1, s2 * 2, h + 1, p))
+
+
+for s in range(1, 101):
+    if g(31, s, 0, 0):
+        print(s)  # 33"""
+
+# 20
+"""def g(s1, s2, h, p):
+    if s1 + s2 >= 132 and h == 3:
+        return True
+    if s1 + s2 >= 132 and h != 3:
+        return False
+    if s1 + s2 < 132 and h == 3:
+        return False
+    if p < 1:
+        if h % 2 != 0:  # Полина
+            return (g(s1 + 2, s2, h + 1, p) and g(s1, s2 + 2, h + 1, p) and
+                    g(s1 * 2, s2, h + 1, p) and g(s1, s2 * 2, h + 1, p) and
+                    g(s1 * 3, s2, h + 1, 1) and g(s1, s2 * 3, h + 1, 1))
+        else:  # Вика
+            return (g(s1 + 2, s2, h + 1, p) or g(s1, s2 + 2, h + 1, p) or
+                    g(s1 * 2, s2, h + 1, p) or g(s1, s2 * 2, h + 1, p) or
+                    g(s1 * 3, s2, h + 1, 1) or g(s1, s2 * 3, h + 1, 1))
+    else:
+        if h % 2 != 0:  # Полина
+            return (g(s1 + 2, s2, h + 1, p) and g(s1, s2 + 2, h + 1, p) and
+                    g(s1 * 2, s2, h + 1, p) and g(s1, s2 * 2, h + 1, p))
+        else:  # Вика
+            return (g(s1 + 2, s2, h + 1, p) or g(s1, s2 + 2, h + 1, p) or
+                    g(s1 * 2, s2, h + 1, p) or g(s1, s2 * 2, h + 1, p))
+
+
+for s in range(100, 0, -1):
+    if g(31, s, 0, 0):
+        print(s)  # 32 31"""
+
+# 21
+"""def g(s1, s2, h, p):
+    if s1 + s2 >= 132 and (h == 2 or h == 4):
+        return True
+    if s1 + s2 >= 132 and (h != 2 and h != 4):
+        return False
+    if s1 + s2 < 132 and h == 4:
+        return False
+    if p < 1:
+        if h % 2 != 0:  # Полина
+            return (g(s1 + 2, s2, h + 1, p) or g(s1, s2 + 2, h + 1, p) or
+                    g(s1 * 2, s2, h + 1, p) or g(s1, s2 * 2, h + 1, p) or
+                    g(s1 * 3, s2, h + 1, 1) or g(s1, s2 * 3, h + 1, 1))
+        else:  # Вика
+            return (g(s1 + 2, s2, h + 1, p) and g(s1, s2 + 2, h + 1, p) and
+                    g(s1 * 2, s2, h + 1, p) and g(s1, s2 * 2, h + 1, p) and
+                    g(s1 * 3, s2, h + 1, 1) and g(s1, s2 * 3, h + 1, 1))
+    else:
+        if h % 2 != 0:  # Полина
+            return (g(s1 + 2, s2, h + 1, p) or g(s1, s2 + 2, h + 1, p) or
+                    g(s1 * 2, s2, h + 1, p) or g(s1, s2 * 2, h + 1, p))
+        else:  # Вика
+            return (g(s1 + 2, s2, h + 1, p) and g(s1, s2 + 2, h + 1, p) and
+                    g(s1 * 2, s2, h + 1, p) and g(s1, s2 * 2, h + 1, p))
+
+
+for s in range(1, 101):
+    if g(31, s, 0, 0):
+        print(s)  # 29"""
