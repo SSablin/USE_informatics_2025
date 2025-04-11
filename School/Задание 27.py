@@ -1100,3 +1100,44 @@ print(density_cl)
 print(int(max(density_cl) * 1000), int((sum(density_cl) / len(density_cl)) * 1000))
 # A: 35954 32067
 # B: 2361060 2235322"""
+
+# №21425
+"""from math import dist
+
+clustersA = [[], []]
+
+for s in open('files/27_A_21425.txt'):
+    x, y = (float(kl) for kl in s.replace(',', '.').split())
+    if x < 15:
+        clustersA[0].append([x, y])
+    else:
+        clustersA[1].append([x, y])
+
+clustersB = [[], [], []]
+
+for s in open('files/27_B_21425.txt'):
+    x, y = (float(kl) for kl in s.replace(',', '.').split())
+    if x < 0:
+        clustersB[0].append([x, y])
+    elif y > 0:
+        clustersB[1].append([x, y])
+    else:
+        clustersB[2].append([x, y])
+
+
+def center(cl):
+    r = []
+    for p1 in cl:
+        r.append([sum(dist(p1, p2) for p2 in cl), p1])
+    return min(r)[1]
+
+
+centerA = [center(cl) for cl in clustersA]
+centerB = [center(cl) for cl in clustersB]
+
+pxA = sum(x for x, y in centerA) / 2 * 10_000
+pyA = sum(y for x, y in centerA) / 2 * 10_000
+print(int(pxA), int(pyA))  # 167990 73043
+pxB = sum(x for x, y in centerB) / 3 * 10_000
+pyB = sum(y for x, y in centerB) / 3 * 10_000
+print(int(pxB), int(pyB))  # 122627 29105"""

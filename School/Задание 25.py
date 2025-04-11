@@ -82,3 +82,18 @@ while count < 5:
         print(x, max(count_d))
         count += 1"""
 
+# 25 №21422
+"""c = 0
+while c < 5:
+    for x in range(1_125_000, 2_000_000):
+        if c < 5:
+            for i in range(1, x):
+                if x % i == 0 and i % 10 == 7 and i != 7:
+                    print(x, i)
+                    c += 1
+                    break
+# 1125003 467
+# 1125005 7
+# 1125006 97
+# 1125009 17
+# 1125011 3187"""

@@ -550,3 +550,34 @@ for i in range(1, k):
         print(i, i + 1)
 # 9991 5643"""
 
+# №21424
+"""f = open('files/26_21424.txt')
+n = int(f.readline())
+data = sorted(list(map(int, f.readlines())))
+
+boxes = [0]
+for i in range(len(data)):
+    if data[i] - boxes[-1] >= 9:
+        boxes.append(data[i])
+print(boxes)  # 1040
+print(len(boxes) - 1)
+x = 50
+boxes1 = boxes[1:]
+while len(boxes1) == 1040:
+    x += 1
+    boxes = [x]
+    for i in range(len(data)):
+        if data[i] - boxes[-1] >= 9:
+            boxes.append(data[i])
+    boxes1 = boxes
+print(x - 1)  # 57"""
+
+# Решу Егэ
+"""f = open('files/26_21424.txt')
+n = f.readline()
+boxes = sorted([int(i) for i in f], reverse=True)
+answer = [boxes[0]]
+for box in boxes[1:]:
+    if answer[-1] - box >= 9:
+        answer.append(box)
+print(len(answer), answer[-1])  # 1040 57"""

@@ -1129,3 +1129,22 @@ s = open('files/24_горбачев6.txt').readline()
 expr = findall('(?:[1-9, AB]+)(?:[-.+*][1-9, AB]+)+', s)
 ans = max(expr, key=len)
 print(len(ans), ans)   # 53"""
+
+
+# 21421
+"""from re import *
+s = open('files/24_21421.txt').readline()
+expr = findall(f'(?:[1-9, AB][0-9, AB]*)', s)
+ans = max([x for x in expr if int(x, 12) % 2 == 0], key=len)
+print(len(ans), ans)  # 19"""
+
+# Кабанов
+""" from re import *
+
+s = open('files/24_21421.txt').readline()
+
+reg = f'[1-9AB][0-9AB]*[02468A]'
+reg = rf'(?=({reg}))'
+m = max((x.group(1) for x in finditer(reg, s)), key=len)
+print(m)
+print(len(m))  # 19"""
