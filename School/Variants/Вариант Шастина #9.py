@@ -173,7 +173,7 @@ print(len(ans), abs(min(ans)))  # 566 1462000"""
 # re - не верно
 """from re import findall
 s = open('files/24_19884.txt').readline()
-expr = findall(f'(?:0|[6-9]+)(?:[*-]0|(?:[*-][6-9][0, 6-9]))', s)
+expr = findall(f'(?:0|[6-9][0, 6-9]*)(?:[*-](?:0|[6-9][0, 6-9]*))+', s)
 print(expr)
 print(len(expr))  # 584675"""
 

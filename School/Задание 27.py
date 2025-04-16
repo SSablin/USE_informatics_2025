@@ -1141,3 +1141,53 @@ print(int(pxA), int(pyA))  # 167990 73043
 pxB = sum(x for x, y in centerB) / 3 * 10_000
 pyB = sum(y for x, y in centerB) / 3 * 10_000
 print(int(pxB), int(pyB))  # 122627 29105"""
+
+# № 21599
+"""from math import dist
+from turtle import *
+f = open('files/27_B_21599.txt')
+data = list(list(map(float, s.replace(',', '.').split())) for s in f)
+clusters = []
+while data:
+    clusters.append([data.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data.copy():
+            if dist(p1, p2) <= 1.5:
+                clusters[-1].append(p2)
+                data.remove(p2)
+print([len(cl) for cl in clusters])
+
+# clusters = [[] for _ in range(3)]
+# for x, y in data:
+#     if y > x - 10:
+#         clusters[0].append([x, y])
+#     elif x - 10 > y > -5:
+#         clusters[1].append([x, y])
+#     else:
+#         clusters[2].append([x, y])
+
+from turtle import *
+tracer(0)
+screensize(3000, 3000)
+up()
+colors = ['red', 'green', 'blue', 'pink', 'brown', 'yellow']
+for cl, color in zip(clusters, colors):
+    for x, y in cl:
+        goto(x * 10, y * 10)
+        dot(5, color)
+done()
+
+def center(cl):
+    r = []
+    for p1 in cl:
+        sm = sum(dist(p1, p2) for p2 in cl)
+        r.append([sm, p1])
+    return min(r)[1]
+
+
+center_cl = [center(cl) for cl in clusters]
+px = sum(x for x, y in center_cl) / len(clusters) * 10_000
+py = sum(y for x, y in center_cl) / len(clusters) * 10_000
+print(int(abs(px)), int(abs(py)))
+# A: 178755 2896
+# B: 37392 50998"""
