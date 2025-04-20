@@ -742,4 +742,3 @@ mx = [[x[0][0], len(x)] for x in st]
 # print(mx)
 ans = max(mx, key=lambda x: x[1])
 print(ans)  # 10135 42"""
-
