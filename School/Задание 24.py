@@ -1130,7 +1130,6 @@ expr = findall('(?:[1-9, AB]+)(?:[-.+*][1-9, AB]+)+', s)
 ans = max(expr, key=len)
 print(len(ans), ans)   # 53"""
 
-
 # 21421
 """from re import *
 s = open('files/24_21421.txt').readline()
@@ -1148,3 +1147,71 @@ reg = rf'(?=({reg}))'
 m = max((x.group(1) for x in finditer(reg, s)), key=len)
 print(m)
 print(len(m))  # 19"""
+
+# ЕГКР 19.04 В1
+# Двойным циклом
+"""s = open('files/24_егкр19.04_1.txt').readline()
+
+m = 10000
+for l in range(len(s)):
+    for r in range(l + m, l, -1):
+        c = s[l:r + 1]
+        if c.count('QFG') < 105:
+            break
+        elif c.count('QFG') == 105 and c[0] != 'Q':
+            m = min(m, len(c))
+    # if l % 1000000 == 0:
+    #     print(l, len(s), m)  
+print(m)  # 379"""
+
+# Двумя указателями
+"""s = open('files/24_егкр19.04_1.txt').readline()
+
+l = 0
+m = '0' * 1000
+k = 0
+sub = ''
+
+for r in range(2, len(s)):
+    if s[r - 2] + s[r - 1] + s[r] == 'QFG':
+        k += 1
+    while k == 105:
+        if s[l] + s[l + 1] + s[l + 2] == 'QFG':
+            k -= 1
+        l += 1
+        if k == 105 and s[l] != 'Q':
+            m = min(m, s[l:r+1], key=len)
+print(m)
+print(len(m))  # 379"""
+
+# ЕГКР 19.04 В2
+# Кабанов
+# Двойным циклом
+"""s = open('files/24_егкр19.04_2.txt').readline()
+
+m = 10000
+for l in range(len(s)):
+    for r in range(l + m, l, -1):
+        c = s[l:r + 1]
+        if c.count('RSQ') < 130:
+            break
+        elif c.count('RSQ') == 130 and c[-1] != 'Q':
+            m = min(m, len(c))
+    # if l % 1_000_000 == 0:
+    #     print(l, len(s), m)
+print(m)  # 497"""
+
+# Двумя указателями
+"""s = open('files/24_егкр19.04_2.txt').readline()
+
+l, k = 0, 0
+m = 10000
+for r in range(2, len(s)):
+    if s[r - 2] + s[r - 1] + s[r] == 'RSQ':
+        k += 1
+    while k == 130 and s[r] != 'Q':
+        m = min(m, r - l + 1)
+        if s[l] + s[l + 1] + s[l + 2] == 'RSQ':
+            k -= 1
+        l += 1
+print(m)  # 497"""

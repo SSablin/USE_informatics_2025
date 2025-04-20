@@ -698,3 +698,48 @@ if len(dlin[-1]) == 1:
 mx_dlin = max(y - x for x, y in dlin)
 print(dlin[-2][0], mx_dlin)  # 1431"""
 
+# ЕГКР 19.04 В1
+"""f = open('files/26_егкр19.04_1.txt')
+# f = open('files/26_егкр19.04_test.txt')
+n = int(f.readline())
+data = list(list(map(int, s.split())) for s in f)
+data.sort()
+st = [[[0, 0]]]
+for i in range(len(data) - 1):
+    if data[i][0] == data[i + 1][0]:
+        if data[i][0] != st[-1][0][0]:
+            st.append([data[i]])
+        if data[i + 1][1] - st[-1][-1][1] == 2:
+            st[-1].append(data[i + 1])
+
+ln = [len(x) for x in st]
+print(st)
+print(ln)
+mx = [[x[0][0], len(x)] for x in st]
+print(mx)
+ans = max(mx, key=lambda x: x[1])
+print(ans)  # 10031 26"""
+
+# ЕГКР 19.04 В2
+"""f = open('files/26_егкр19.04_2.txt')
+# f = open('files/26_егкр19.04_test.txt')
+n = int(f.readline())
+data = list(list(map(int, s.split())) for s in f)
+data.sort()
+st = [[[0, 0]]]
+for i in range(len(data) - 1):
+    if data[i][0] == data[i + 1][0]:
+        if data[i][0] != st[-1][0][0]:
+            st.append([data[i]])
+        if data[i + 1][1] - st[-1][-1][1] == 2:
+            st[-1].append(data[i + 1])
+
+ln = [len(x) for x in st]
+# print(st)
+print(max(st, key=len))
+# print(ln)
+mx = [[x[0][0], len(x)] for x in st]
+# print(mx)
+ans = max(mx, key=lambda x: x[1])
+print(ans)  # 10135 42"""
+

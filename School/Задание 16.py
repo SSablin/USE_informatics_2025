@@ -175,3 +175,21 @@ for n in range(1, 2025):
     if n > 1:
         f.append(2 * n * f[n - 1])
 print((f[2024] // 16 - f[2023]) / f[2022])"""
+
+# ЕГКР 19.04 В2
+"""
+# from sys import setrecursionlimit
+# setrecursionlimit(50000)
+from functools import *
+
+@lru_cache(None)
+def f(n):
+    if n <= 20:
+        return n
+    else:
+        return (n-6) * f(n-7)
+
+for i in range(1, 47900): f(i)
+
+print((f(47872) - 290 * f(47865))//f(47858))  # 2276939784
+"""

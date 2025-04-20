@@ -85,7 +85,7 @@ for b in range(1, 101):
             mx = (b - a)
             print(mx)  # 10"""
 
-# ЕГКР 19.04
+# ЕГКР 19.04 В1
 """P = list(range(66, 75 + 1))
 Q = list(range(72, 85 + 1))
 A = []
@@ -125,6 +125,22 @@ for b in range(1, 101):
             mn = (b - a)
 print(mn)  # 19"""
 
+"""def f(x):
+    P = 66 <= x <= 75
+    Q = 72 <= x <= 85
+    A = a1 <= x <= a2
+    return (not A) <= (P == Q)
+ox = [y for x in (66, 75, 72, 85) for y in (x, x+0.01, x-0.01)]
+
+m = []
+for a1 in ox:
+      for a2 in ox:
+          if a2 > a1 and all(f(x)==1 for x in ox):
+              m.append(a2-a1)
+print(min(m)) # 19"""
+
+
+
 # №20961
 """P = list(range(15, 142 + 1))
 Q = list(range(38, 167 + 1))
@@ -160,3 +176,21 @@ for b in range(0, 350 + 1):
         if f and (b - a) < mn:
             mn = (b - a)
             print(mn)  # 80"""
+
+
+# ЕГКР 19.04 В2
+# Кабанов
+"""def f(x):
+    B = 36 <= x <= 75
+    C = 60 <= x <= 110
+    A = a1 <= x <= a2
+    return (not A) <= (B==C)
+ox = [y for x in (36, 75, 60, 110) for y in (x, x+0.01, x-0.01)]
+
+m = []
+for a1 in ox:
+      for a2 in ox:
+          if a2 > a1 and all(f(x)==1 for x in ox):
+              m.append(a2-a1)
+print(min(m)) # 74"""
+
