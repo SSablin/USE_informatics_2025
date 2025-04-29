@@ -194,3 +194,151 @@ for a1 in ox:
               m.append(a2-a1)
 print(min(m)) # 74"""
 
+# №21710
+"""mn = float('inf')
+for a1 in range(1, 400):
+    for a2 in range(a1, 1600):
+        a2 /= 4
+        f = True
+        for x in range(1, 200):
+            A = a1 <= x <= a2
+            B = 36 <= x <= 75
+            C = 60 <= x <= 110
+            if not ((not A) <= (B == C)):
+                f = False
+                break
+        if f:
+            mn = min(mn, a2 - a1)
+            print(mn, a1, a2)  # 74"""
+
+# №20961
+"""mn = float('inf')
+for a1 in range(1, 400):
+    for a2 in range(a1, 1600):
+        a2 /= 4
+        f = False
+        for x in range(1, 400):
+            A = a1 <= x <= a2
+            P = 15 <= x <= 142
+            Q = 38 <= x <= 167
+            if not (Q <= ((not A) and P)) <= (not Q):
+                f = True
+                break
+        if not f:
+            if (a2 - a1) < mn:
+                mn = a2 - a1
+                print(mn, a1, a2)  # 104"""
+
+"""for x in [k * 0.25 for k in range(-10000, 10001)]:
+    a = 0
+    p = 15 <= x <= 142
+    q = 38 <= x <= 167
+    f = not(q <= (((not a) and p) <= (not q)))
+    if f != 0:
+        print(x)
+print(142 - 38)  # 104"""
+
+# https://3.shkolkovo.online/catalog/7517
+# 49372
+"""mn = float('inf')
+for a1 in range(1, 800):
+    for a2 in range(a1+1, 800):
+        a2 /= 4
+        f = True
+        for x in range(1, 200):
+            P = 55 <= x <= 100
+            Q = 66 <= x <= 129
+            A = a1 <= x <= a2
+            if not (P <= (((Q and (not A)) <= (not P)))):
+                f = False
+                break
+        if f:
+            mn = min(mn, a2 - a1)
+print(mn)  # 34"""
+
+# 6012
+
+"""mx = 0
+for a1 in range(1, 400):
+    for a2 in range(a1 + 1, 800):
+        a2 /= 4
+        f = True
+        for x in range(1, 400):
+            P = 15 <= x <= 50
+            Q = 35 <= x <= 60
+            A = a1 <= x <= a2
+            if not (((not A) <= P) <= (A <= Q)):
+                f = False
+                break
+        if f:
+            mx = max(mx, a2 - a1)
+            print(mx)
+print(mx)  # 25"""
+
+# 6743
+"""mn = float('inf')
+for a1 in range(1, 400):
+    for a2 in range(a1+1, 800):
+        a2 /= 4
+        f = True
+        for x in range(1, 400):
+            P = 10 <= x <= 17
+            Q = 15 <= x <= 25
+            A = a1 <= x <= a2
+            if not (P <= ((Q and (not A)) <= (not P))):
+                f = False
+                break
+        if f:
+            mn = min(mn, a2 - a1)
+            print(mn)  # 2"""
+
+# 6745
+"""mn = float('inf')
+for a1 in range(1, 400):
+    for a2 in range(a1+1, 800):
+        a2 /= 4
+        f = True
+        for x in range(1, 400):
+            P = 10 <= x <= 50
+            Q = 30 <= x <= 65
+            A = a1 <= x <= a2
+            if not ((not A) <= ((P and Q) <= A)):
+                f = False
+                break
+        if f:
+            mn = min(mn, a2 - a1)
+            print(mn)  # 20"""
+# 6746
+"""mx = 0
+for a1 in range(1, 400):
+    for a2 in range(a1+1, 800):
+        a2 /= 4
+        f = True
+        for x in range(1, 400):
+            P = 15 <= x <= 50
+            Q = 35 <= x <= 60
+            A = a1 <= x <= a2
+            if not (((not A) <= P) <= (A <= Q)):
+                f = False
+                break
+        if f:
+            mx = max(mx, a2 - a1)
+            print(mx)  # 25"""
+"""p = [i for i in range(15, 51)]  # задаем отрезок p
+q = [i for i in range(35, 61)]  # задаем отрезок q
+mx = 0
+for a1 in range(1, 100):  # перебираем начало отрезка а
+    for a2 in range(a1 + 1, 101):  # перебираем конец отрезка а
+        c = 0  # флаг, который будет показывать при всех ли х для текущего отрезка а выражение было истинным
+        a = [i for i in range(a1, a2)]  # формируем отрезок а
+        for x in range(1, 500):  # перебираем значения x
+            # если при текущем x выражение ложно
+            if (((x not in a) <= (x in p)) <= ((x in a) <= (x in q))) == False:
+                c = 1  # меняем значение флага
+                # и сбрасываем цикл, переходим к следующему отрезку а,
+                # так как для данного отрезка а выражение не тождественно истинно
+                break
+        if c == 0:  # если значение флага не менялось, значит, при любом х при данном отрезке а выражение было истинным
+            mx = max(len(a) - 1, mx)  # вычисляем максимальную длину отрезка
+print(mx)  # 25"""
+
