@@ -846,8 +846,6 @@ for to, fr, s in a:
 m = max(d.keys())
 print(m, K - d[m])  # 4835 419"""
 
-
-
 """№ 20970 (Уровень: Средний)
 (М. Попков) В сервисном центре работают K мастерских для ремонта устройств.
 Некоторые поломки могут быть устранены только в определённой мастерской, некоторые – в любой мастерской.
@@ -874,24 +872,36 @@ N (N ≤ 1000) – общее количество устройств,
 В ответе запишите два целых числа: сначала наибольшее количество устройств,
 отремонтированных в одной мастерской, затем количество утилизированных устройств."""
 
-f = open('files/26_20970.txt')
+"""f = open('files/26_20970.txt')
 n, k = map(int, f.readline().split())
-data = []
-for _ in range(n):
-    x = list(map(int, f.readline().split()))
-    data.append([x[0], x[0] + x[1], x[2]])
+a = []
+for line in f:
+    start, dlit, mas = map(int, line.split())
+    a.append([start, dlit, mas])
 
-masters = [[] * k]
-c_util = 0
-
-for i in range(n):
-    for j in range((len(masters))):
-        if len(masters[j]) > 0:
-            for m in range(len(masters[j])):
-                if masters[j][m] < data[i][0]:
-                    masters[j].remove(masters[j][m])
-                else:
-                    continue
-    if masters[data[i][2]] < 5:
-
-print(c_util)
+a.sort()
+cnt_mas = [0] * k
+cnt_util = 0
+ocheredi = [[] for i in range(k)]
+for start, dlit, mas in a:
+    for i in range(k):
+        while ocheredi[i] != [] and ocheredi[i][0] <= start:
+            del ocheredi[i][0]
+    if mas != 0:
+        ind_mas = mas - 1
+    else:
+        ind_mas = 0
+        min_len = float('inf')
+        for i in range(k):
+            if len(ocheredi[i]) < min_len:
+                min_len = len(ocheredi[i])
+                ind_mas = i
+    if ocheredi[ind_mas] == []:
+        ocheredi[ind_mas].append(start + dlit)
+        cnt_mas[ind_mas] += 1
+    elif len(ocheredi[ind_mas]) < 5:
+        ocheredi[ind_mas].append(ocheredi[ind_mas][-1] + dlit)
+        cnt_mas[ind_mas] += 1
+    else:
+        cnt_util += 1
+print(max(cnt_mas), cnt_util)  # 72 218"""
