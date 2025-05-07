@@ -907,7 +907,6 @@ print(px, py)
 # 5692 -11075
 # 15394 4837"""
 
-
 # 8
 """def dist(p1, p2):
     return abs(p2[0] - p1[0]) + abs(p2[1] - p1[1])
@@ -1191,3 +1190,34 @@ py = sum(y for x, y in center_cl) / len(clusters) * 10_000
 print(int(abs(px)), int(abs(py)))
 # A: 178755 2896
 # B: 37392 50998"""
+
+# ЕГКР 19.04 В1
+"""from math import dist
+
+f = open('files/27_B_егкр19.04_1.txt')
+f.readline()
+data = list(list(map(float, s.split())) for s in f)
+clusters = []
+while data:
+    clusters.append([data.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data.copy():
+            if dist(p1, p2) <= 2:
+                clusters[-1].append(p2)
+                data.remove(p2)
+
+
+def center(cl):
+    r = []
+    for p1 in cl:
+        r.append([sum(dist(p1, p2) for p2 in cl), p1])
+    return min(r)[1]
+
+
+centeroid = [center(cl) for cl in clusters]
+px = sum(x for x, y in centeroid) / len(centeroid) * 10_000
+py = sum(y for x, y in centeroid) / len(centeroid) * 10_000
+print(abs(int(px)), abs(int(py)))
+# A: 32678 29156
+# B: 31457 14113"""
+
