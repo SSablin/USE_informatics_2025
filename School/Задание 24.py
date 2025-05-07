@@ -1340,3 +1340,24 @@ for i in range(len(s) - 3):
                             if all(int(j) in range(0, 256) for j in p.split(".")):
                                 c += 1
 print(c)  # 261172"""
+
+
+# №21908
+"""from re import findall
+
+s = open('files/24_21908.txt').readline()
+
+expr = findall('[123456789ABCD][0123456789ABCD]+[02468AC]', s)
+ans = max(expr, key=len)
+print(len(ans))  # 2598
+print(ans)"""
+
+# №21908
+"""from re import findall
+
+s = open('files/24_21908.txt').readline()
+
+expr = findall(f'([1-9][0-9ABCD]+[02468AC])', s)
+print(max(expr, key=len))
+print(len(max(expr, key=len)))  # 2598"""
+

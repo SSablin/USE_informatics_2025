@@ -163,3 +163,13 @@ for ip in net:
         k += 1
         print(k, ip)
 print(k)"""
+
+# МЦКО 10 класс 2025
+"""from ipaddress import *
+c = 0
+net = ip_network('192.168.112.170/255.255.255.224', 0)
+for ip in net.hosts():
+    c += 1
+    if ip == ip_address('192.168.112.170'):
+        print(c)
+        break"""
