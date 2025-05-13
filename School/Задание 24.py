@@ -1361,3 +1361,13 @@ expr = findall(f'([1-9][0-9ABCD]+[02468AC])', s)
 print(max(expr, key=len))
 print(len(max(expr, key=len)))  # 2598"""
 
+# 24 горбачев11
+# выражение из 7ричных чисел, знаки в порядке по правилам математики (* +)
+"""from re import *
+s = open('files/24_горбачев7.txt').readline()
+numb = r'(?:0|[1-6][0-6]*)'
+reg = rf'{numb}(\+{numb})*(\*{numb})*'
+reg = rf'(?=({reg}))'
+m = max((x.group(1) for x in finditer(reg, s)), key=len)
+print(len(m))  # 37
+print(m)"""
