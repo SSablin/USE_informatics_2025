@@ -1,5 +1,6 @@
 # 6
-"""from turtle import *
+from turtle import *
+
 tracer(0)
 screensize(5000, 5000)
 c = 25
@@ -19,18 +20,18 @@ for x in range(-100, 100):
         setpos(x * c, y * c)
         dot(3, 'green')
 done()
-print(int(6 + 6*3**0.5 + 12 + 12*3**0.5))  # 49"""
+print(int(6 + 6 * 3 ** 0.5 + 12 + 12 * 3 ** 0.5))  # 49
 
 # 7
-"""data1 = 1000 * 1024 * 1024 * 8
-t1 = data1 / 2**23
+data1 = 1000 * 1024 * 1024 * 8
+t1 = data1 / 2 ** 23
 data2 = 0.6 * data1
-t3 = data2 / 2**20
+t3 = data2 / 2 ** 20
 t2 = 100 * 60 - t1 - t3
-print(t2)  # 200"""
+print(t2)  # 200
 
 # 9
-"""for s in open('files/9_шастин10.txt'):
+for s in open('files/9_шастин10.txt'):
     a = list(map(int, s.split()))
     chet = []
     nchet = []
@@ -39,28 +40,32 @@ print(t2)  # 200"""
             chet.append(x)
         else:
             nchet.append(x)
-    if len(set(a)) == len(a) and sum(chet)**2 > sum(nchet)**3:
-        print(a, sum(a))  # 246"""
+    if len(set(a)) == len(a) and sum(chet) ** 2 > sum(nchet) ** 3:
+        print(a, sum(a))  # 246
 
 # 11
-"""from math import ceil, log2
+from math import ceil, log2
+
 N = 18 + 10
 i = ceil(log2(N))
 s = ceil(i * 12 / 8)
 data = 28 - s
-print(data)  # 20"""
+print(data)  # 20
 
 # 13
-"""from ipaddress import *
+from ipaddress import *
+
 net = ip_network('98.71.254.171/255.248.0.0', 0)
 for ip in net.hosts():
     b = f'{ip:b}'
     if b.count('1') % 5 == 0:
         print(ip)
-# 9871255248"""
+
+
+# 9871255248
 
 # 23
-"""def f(x, end):
+def f(x, end):
     if x < end or x == 20:
         return False
     if x == end:
@@ -69,10 +74,11 @@ for ip in net.hosts():
         return f(x - 2, end) + f(x - 3, end) + f(int(x ** 0.5), end)
 
 
-print(f(26, 3))  # 276"""
+print(f(26, 3))  # 276
 
 # 24
-"""from string import digits, ascii_uppercase
+from string import digits, ascii_uppercase
+
 alf = (digits + ascii_uppercase)[:16]
 nalf = (digits + ascii_uppercase)[16:]
 s = open('files/24_шастин10.txt').readline()
@@ -93,10 +99,11 @@ for c in s.split():
             if cn == 10 and s[l] != '0':
                 ans = max(ans, s[l:r + 1], key=len)
 print(len(ans))
-print(ans)  # 357"""
+print(ans)  # 357
+
 
 # 25
-"""
+
 def simple(i):
     for j in range(2, i):
         if i % j == 0:
@@ -128,7 +135,7 @@ for x in range(750_000, 0, -1):
 # 748679 3552
 # 748663 333
 # 746360 222
-# 745109 2997"""
+# 745109 2997
 
 # 26
 """Задание 26.
@@ -159,14 +166,14 @@ for x in range(750_000, 0, -1):
 Их суммарная длительность равна (10 - 0) + (100 - 51) + (200 - 171) = 88. Ответ для примера: 3 88.
 Типовой пример имеет иллюстративный характер. Для выполнения задания используйте Данные из прилагаемых файлов."""
 
-"""f = open('files/26_шастин11.txt')
+f = open('files/26_шастин11.txt')
 n = int(f.readline())
 d = 86400000  # длительность суток в мс
 data = sorted([list(map(int, s.split())) for s in f])
 # example
-n = 6
-d = 200
-data = [[10, 50], [100, 150], [110, 155], [120, 160], [130, 170], [151, 170]]
+# n = 6
+# d = 200
+# data = [[10, 50], [100, 150], [110, 155], [120, 160], [130, 170], [151, 170]]
 
 intervals = []
 current_start = 0  # начало первого возможного простоя
@@ -186,10 +193,10 @@ ans1 = len(intervals)
 ans2 = sum(end - start + 1 for start, end in intervals)  # +1 потому что обе границы включены
 
 print(intervals)
-print(ans1, ans2)  # 36 35834"""
+print(ans1, ans2)  # 36 35834
 
 # 27
-"""from math import dist
+from math import dist
 
 
 def anticentroid(cl):
@@ -199,10 +206,10 @@ def anticentroid(cl):
     return max(r)[1]
 
 
-def final(anticentrs, data):
+def final(anticenters, data):
     r = []
     for p in data:
-        r.append([sum(dist(p, ac) for ac in anticentrs), p])
+        r.append([sum(dist(p, ac) for ac in anticenters), p])
     return max(r)[1]
 
 
@@ -224,5 +231,4 @@ final = final(anticentroids, data1)
 print(final)
 print(int(abs(final[0] * 10_000)), int(abs(final[1] * 10_000)))
 # A: 238357 178493
-# B: 65683 232156"""
-
+# B: 65683 232156

@@ -1,6 +1,6 @@
 # https://kompege.ru/variant?kim=25099988
 # 2
-"""print('x y z w F')
+print('x y z w F')
 from itertools import product
 for i in product(range(2), repeat=4):
     x, y, z, w = i
@@ -10,10 +10,10 @@ for i in product(range(2), repeat=4):
 # x y w z
 # 1 1 1 0
 # 1 0 0 0
-# 1 1 0 0"""
+# 1 1 0 0
 
 # 6
-"""from turtle import *
+from turtle import *
 tracer(0)
 screensize(5000, 5000)
 
@@ -29,37 +29,37 @@ for x in range(-100, 100):
         setpos(x * c, y * c)
         dot(3, 'green')
 done()
-# 80"""
+# 80
 
 # 7
-"""from math import log2, ceil
+from math import log2, ceil
 
 N = 10_000
 i = ceil(log2(N))
 I = 1080 * 1920 * i * 30 + 2 * 48 * 8
 t = (1238 * 1024 ** 2 * 8) / I
-print(int(t))  # 11"""
+print(int(t))  # 11
 
 # 11
-"""from math import log2, ceil
+from math import log2, ceil
 for l in range(1, 10000):
     N = 10 + 26 + 230
     i = ceil(log2(N))
     if ceil(l * i / 8) * 1365 <= 2 * 1024**2:
-        print(l)  # 1365"""
+        print(l)  # 1365
 
 # 13
-"""from ipaddress import *
+from ipaddress import *
 net = ip_network('131.159.219.0/255.252.0.0', False)
 c = 0
 for ip in net.hosts():
     b = format(ip, 'b')
     if b.count('1') % 7 == 0:
         c += 1
-print(c)  # 34884"""
+print(c)  # 34884
 
 # 14
-"""def si(x, i):
+def si(x, i):
     s = []
     while x > 0:
         s.append(x % i)
@@ -73,10 +73,10 @@ for x in range(33, 2034):
     s19 = si(s, 19)
     if s19.count(7) >= mx7:
         mx7 = s19.count(7)
-        print(x)  # 1017"""
+        print(x)  # 1017
 
 # 15
-"""mx = 0
+mx = 0
 for a in range(1, 400):
     a /= 4
     for b in range(int(a), 200):
@@ -94,10 +94,10 @@ for a in range(1, 400):
                 print(mx, a, b)
 print(mx)
 # (70; 108]
-# 38"""
+# 38
 
 # 16
-"""from sys import setrecursionlimit
+from sys import setrecursionlimit
 
 setrecursionlimit(1000000)
 
@@ -109,10 +109,10 @@ def f(n):
         return n * f(n - 1)
 
 
-print((f(120240) - f(120238) // 9) // f(120239))  # 120239"""
+print((f(120240) - f(120238) // 9) // f(120239))  # 120239
 
 # 23
-"""from math import ceil
+from math import ceil
 
 def f(x, end):
     if x == end:
@@ -121,20 +121,20 @@ def f(x, end):
         return 0
     return f(x - 1, end) + f(x - 3, end) + f(ceil(x / 3), end)
 
-print(f(61, 18) * f(18, 13))  # 13051416"""
+print(f(61, 18) * f(18, 13))  # 13051416
 
 # 24
-"""from re import *
+from re import *
 s = open('files/24_горбачев7.txt').readline()
 numb = r'(?:0|[1-6][0-6]*)'
 reg = rf'{numb}(\+{numb})*(\*{numb})*'
 reg = rf'(?=({reg}))'
 m = max((x.group(1) for x in finditer(reg, s)), key=len)
 print(len(m))  # 37
-print(m)"""
+print(m)
 
 # 25
-"""def R(x):
+def R(x):
     s = set()
     for i in range(1, int(x ** 0.5) + 1):
         if x % i == 0:
@@ -157,10 +157,10 @@ while c < 6:
 # 799966 1199952
 # 799961 799962
 # 799956 2099552
-# 799948 1407672"""
+# 799948 1407672
 
 # 26
-"""f = open('files/26_горбачев7.txt')
+f = open('files/26_горбачев7.txt')
 k = int(f.readline())
 n = int(f.readline())
 data = sorted(list(list(map(int, s.split())) for s in f))
@@ -179,10 +179,10 @@ for st, end in data:
             break
     else:
         ans[0] += 1
-print(ans[0], ans[1])  # 419 152"""
+print(ans[0], ans[1])  # 419 152
 
 # 27
-"""from math import dist
+from math import dist
 
 
 def anticenter(cl):
@@ -210,4 +210,4 @@ Px = sum(x for x, y in anticentroid) / len(anticentroid) * 10_000
 Py = sum(y for x, y in anticentroid) / len(anticentroid) * 10_000
 print(Px, Py)
 # A: 60025 32513
-# B: 60831 40196"""
+# B: 60831 40196
