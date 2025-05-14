@@ -1,4 +1,17 @@
 # https://kompege.ru/variant?kim=25099988
+# 2
+"""print('x y z w F')
+from itertools import product
+for i in product(range(2), repeat=4):
+    x, y, z, w = i
+    f = ((not w) or y and x) and (not z) and x
+    if f:
+        print(x, y, z, w, f)
+# x y w z
+# 1 1 1 0
+# 1 0 0 0
+# 1 1 0 0"""
+
 # 6
 """from turtle import *
 tracer(0)
@@ -18,6 +31,23 @@ for x in range(-100, 100):
 done()
 # 80"""
 
+# 7
+"""from math import log2, ceil
+
+N = 10_000
+i = ceil(log2(N))
+I = 1080 * 1920 * i * 30 + 2 * 48 * 8
+t = (1238 * 1024 ** 2 * 8) / I
+print(int(t))  # 11"""
+
+# 11
+"""from math import log2, ceil
+for l in range(1, 10000):
+    N = 10 + 26 + 230
+    i = ceil(log2(N))
+    if ceil(l * i / 8) * 1365 <= 2 * 1024**2:
+        print(l)  # 1365"""
+
 # 13
 """from ipaddress import *
 net = ip_network('131.159.219.0/255.252.0.0', False)
@@ -27,7 +57,6 @@ for ip in net.hosts():
     if b.count('1') % 7 == 0:
         c += 1
 print(c)  # 34884"""
-
 
 # 14
 """def si(x, i):
@@ -40,15 +69,11 @@ print(c)  # 34884"""
 
 mx7 = 0
 for x in range(33, 2034):
-    s = 78 ** 328 - 5 ** x + 7 ** 61 - 5 * x
+    s = 78 ** 378 - 5 ** x + 7 ** 61 - (50 + x)
     s19 = si(s, 19)
-    mx7 = max(mx7, s19.count(7))
-print(mx7)  # 39
-for x in range(33, 2034):
-    s = 78 ** 328 - 5 ** x + 7 ** 61 - 5 * x
-    s19 = si(s, 19)
-    if s19.count(7) == mx7:
-        print(x)  # 519"""
+    if s19.count(7) >= mx7:
+        mx7 = s19.count(7)
+        print(x)  # 1017"""
 
 # 15
 """mx = 0
@@ -90,11 +115,11 @@ print((f(120240) - f(120238) // 9) // f(120239))  # 120239"""
 """from math import ceil
 
 def f(x, end):
-    if x <= end or x == 29:
-        return x == end
-    if x > end:
-        return f(x - 1, end) + f(x - 3, end) + f(ceil(x / 3), end)
-
+    if x == end:
+        return 1
+    if x < end or x == 29:
+        return 0
+    return f(x - 1, end) + f(x - 3, end) + f(ceil(x / 3), end)
 
 print(f(61, 18) * f(18, 13))  # 13051416"""
 
