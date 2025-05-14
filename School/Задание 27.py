@@ -1232,3 +1232,72 @@ print(px, py)
 # Correct:
 # 32679 29156
 # 31458 14113"""
+
+# 27 Шастин11
+"""from math import dist
+
+
+def anticentroid(cl):
+    r = []
+    for p1 in cl:
+        r.append([sum(dist(p1, p2) for p2 in cl), p1])
+    return max(r)[1]
+
+
+def final(anticentrs, data):
+    r = []
+    for p in data:
+        r.append([sum(dist(p, ac) for ac in anticentrs), p])
+    return max(r)[1]
+
+
+f = open('files/27A_шастин11.txt')
+R = float(f.readline())
+data = list(list(map(float, s.split())) for s in f)
+data1 = data.copy()
+clusters = []
+while data:
+    clusters.append([data.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data.copy():
+            if dist(p1, p2) < R:
+                clusters[-1].append(p2)
+                data.remove(p2)
+print([len(cl) for cl in clusters])
+anticentroids = [anticentroid(cl) for cl in clusters]
+final = final(anticentroids, data1)
+print(final)
+print(int(abs(final[0] * 10_000)), int(abs(final[1] * 10_000)))
+# A: 238357 178493
+# B: 65683 232156"""
+
+# 27 Горбачев7
+"""from math import dist
+
+
+def anticenter(cl):
+    r = []
+    for p1 in cl:
+        r.append([sum(dist(p1, p2) for p2 in cl), p1])
+    return max(r)[1]
+
+
+f = open('files/27B_горбачев7.txt')
+data = list(list(map(float, s.split())) for s in f)
+clusters = []
+while data:
+    clusters.append([data.pop()])
+    for p1 in clusters[-1]:
+        for p2 in data.copy():
+            if dist(p1, p2) <= 1:
+                clusters[-1].append(p2)
+                data.remove(p2)
+print([len(cl) for cl in clusters])
+clusters = [cl for cl in clusters if len(cl) >= 30]
+anticentroid = [anticenter(cl) for cl in clusters]
+
+Px = sum(x for x, y in anticentroid) / len(anticentroid) * 10_000
+Py = sum(y for x, y in anticentroid) / len(anticentroid) * 10_000
+print(Px, Py)
+# A: 60025 32513
+# B: 60831 40196"""

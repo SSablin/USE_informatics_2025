@@ -1361,7 +1361,32 @@ expr = findall(f'([1-9][0-9ABCD]+[02468AC])', s)
 print(max(expr, key=len))
 print(len(max(expr, key=len)))  # 2598"""
 
-# 24 горбачев11
+# 24 Шастин11
+# 24
+"""from string import digits, ascii_uppercase
+alf = (digits + ascii_uppercase)[:16]
+nalf = (digits + ascii_uppercase)[16:]
+s = open('files/24_шастин10.txt').readline()
+for a in nalf:
+    while a in s:
+        s = s.replace(a, ' ')
+ans = ''
+for c in s.split():
+    if len(c) > len(ans):
+        cn, l = 0, 0
+        for r in range(len(c)):
+            if c[r] == 'B':
+                cn += 1
+            while cn > 10:
+                if c[l] == 'B':
+                    cn -= 1
+                l += 1
+            if cn == 10 and s[l] != '0':
+                ans = max(ans, s[l:r + 1], key=len)
+print(len(ans))
+print(ans)  # 357"""
+
+# 24 Горбачев7
 # выражение из 7ричных чисел, знаки в порядке по правилам математики (* +)
 """from re import *
 s = open('files/24_горбачев7.txt').readline()
@@ -1371,3 +1396,4 @@ reg = rf'(?=({reg}))'
 m = max((x.group(1) for x in finditer(reg, s)), key=len)
 print(len(m))  # 37
 print(m)"""
+

@@ -97,3 +97,38 @@ while c < 5:
 # 1125006 97
 # 1125009 17
 # 1125011 3187"""
+
+# 25 Шастин11
+"""
+def simple(i):
+    for j in range(2, i):
+        if i % j == 0:
+            return False
+    return True
+
+
+def F(x):
+    s = set()
+    for i in range(7, x, 10):
+        if x % i == 0 and i % 10 == 7 and simple(i):
+            s.add(i)
+    if len(s) == 0:
+        return 0
+    return sum(s) // len(s)
+
+
+print(119, F(119))
+
+c = 0
+for x in range(750_000, 0, -1):
+    if c < 5:
+        if F(x) != 0 and F(x) % 111 == 0:
+            print(x, F(x))
+            c += 1
+    else:
+        break
+# 749039 7992
+# 748679 3552
+# 748663 333
+# 746360 222
+# 745109 2997"""

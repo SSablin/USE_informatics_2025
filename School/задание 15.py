@@ -342,3 +342,23 @@ for a1 in range(1, 100):  # перебираем начало отрезка а
             mx = max(len(a) - 1, mx)  # вычисляем максимальную длину отрезка
 print(mx)  # 25"""
 
+# 15 горбачев7
+"""mx = 0
+for a in range(1, 400):
+    a /= 4
+    for b in range(int(a), 200):
+        f = False
+        for x in range(1, 200):
+            P = 32 <= x <= 70
+            Q = 63 <= x <= 108
+            A = a <= x <= b
+            if (Q <= P) and A:
+                f = True
+                break
+        if not f:
+            if (b - a) > mx:
+                mx = (b - a)
+                print(mx, a, b)
+print(mx)
+# (70; 108]
+# 38"""
