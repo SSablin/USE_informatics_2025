@@ -136,7 +136,7 @@ for n in range(128, 256):
         print(n)
 '''
 
-#2
+# 2
 '''
 print('x y z w F')
 for x in range(2):
@@ -160,7 +160,7 @@ x y z w F
 # 1000
 # 1001
 
-#№ 13091 (Уровень: Средний)
+# № 13091 (Уровень: Средний)
 '''
 for i in range(1, 200):
     n = format(i, 'b')
@@ -169,7 +169,7 @@ for i in range(1, 200):
     r = int(n, 2)
     print(r) 
 '''
-#№ 17859 Демоверсия 2025 (Уровень: Базовый)
+# № 17859 Демоверсия 2025 (Уровень: Базовый)
 '''
 r_max = -10**10
 for i in range(1, 13):
@@ -277,7 +277,7 @@ for i in range(412, 71, -1):
 
 #print(sp[72] - sp[108])'''
 
-#№24 № 17878
+# №24 № 17878
 '''
 import re # регулярные выражения
 
@@ -436,7 +436,7 @@ for c in res:
                     pass
 print(m)
 '''
-#AlexMath
+# AlexMath
 '''
 import re
 
@@ -527,7 +527,6 @@ print(ans1)  # 243
 print(ans2)  # 3614
 '''
 
-
 # № 17873 Демоверсия 2025 (Уровень: Базовый)
 '''	
 В файле содержится последовательность натуральных чисел.
@@ -553,7 +552,7 @@ for i in range(len(sp) - 1):
 
 print(k1, k2)  # 1214 176024
 '''
-#№ 5 17859
+# № 5 17859
 """for i in range(1, 12):
         n = bin(i)[:-2]
         print(i, n)
@@ -595,7 +594,7 @@ for a in range(1, 100):
         if k == 99+99:
             d = min(d, b-a)
 print(d)'''
-#17 №17535
+# 17 №17535
 '''
 f = open('files/24_17535.txt').readline() #f = 'ACDACDA' #f = 'AAACDAAACDAAAAAAAACDAAAAAAAA'
 cd = []
@@ -674,7 +673,6 @@ for n in range(1000, 10000):
     if s % 100 == 23:
         print(n, s)
 '''
-
 
 # 15 № 17634 Основная волна 19.06.24 (Уровень: Базовый)
 '''for a in range(1, 100):
@@ -832,8 +830,6 @@ for i in range(52, 460):
         print(i)  # 92
 print((92 * s) / 8 / 1024 / 1024)  # 364"""
 
-
-
 # 13 №20220
 """from ipaddress import *
 ip = ip_address('111.233.75.16')
@@ -862,7 +858,6 @@ for x in range(1, 10_000):
     s7 = r7(s, 7)
     if s7.count('0') == 203:
         print(x)  # 9604"""
-
 
 # 15 №19899
 """def mod(m, n):
@@ -1013,3 +1008,18 @@ print(get_centroid(cl))
 # A: 352342 343732
 # B: 6446 857780"""
 
+f = open('files/26_20910.txt')
+N, M, K = [int(x) for x in f.readline().split()]
+print(N, M, K)
+min_ryad = [M + 1] * (K + 1)
+for s in f:
+    ryad, mesto = [int(x) for x in s.split()]
+    min_ryad[mesto] = min(min_ryad[mesto], ryad)
+m = []
+for mesto in range(1, K):
+    r = min(min_ryad[mesto], min_ryad[mesto + 1]) - 1
+    if r == 21028:
+        print(mesto, mesto + 1)  # 6660 6661
+    m.append(r)
+print(m)
+print(max(m))  # 21028

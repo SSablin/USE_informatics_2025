@@ -2,6 +2,7 @@
 # 2
 print('x y z w F')
 from itertools import product
+
 for i in product(range(2), repeat=4):
     x, y, z, w = i
     f = ((not w) or y and x) and (not z) and x
@@ -14,6 +15,7 @@ for i in product(range(2), repeat=4):
 
 # 6
 from turtle import *
+
 tracer(0)
 screensize(5000, 5000)
 
@@ -42,14 +44,16 @@ print(int(t))  # 11
 
 # 11
 from math import log2, ceil
+
 for l in range(1, 10000):
     N = 10 + 26 + 230
     i = ceil(log2(N))
-    if ceil(l * i / 8) * 1365 <= 2 * 1024**2:
+    if ceil(l * i / 8) * 1365 <= 2 * 1024 ** 2:
         print(l)  # 1365
 
 # 13
 from ipaddress import *
+
 net = ip_network('131.159.219.0/255.252.0.0', False)
 c = 0
 for ip in net.hosts():
@@ -57,6 +61,7 @@ for ip in net.hosts():
     if b.count('1') % 7 == 0:
         c += 1
 print(c)  # 34884
+
 
 # 14
 def si(x, i):
@@ -114,6 +119,7 @@ print((f(120240) - f(120238) // 9) // f(120239))  # 120239
 # 23
 from math import ceil
 
+
 def f(x, end):
     if x == end:
         return 1
@@ -121,10 +127,12 @@ def f(x, end):
         return 0
     return f(x - 1, end) + f(x - 3, end) + f(ceil(x / 3), end)
 
+
 print(f(61, 18) * f(18, 13))  # 13051416
 
 # 24
 from re import *
+
 s = open('files/24_горбачев7.txt').readline()
 numb = r'(?:0|[1-6][0-6]*)'
 reg = rf'{numb}(\+{numb})*(\*{numb})*'
@@ -132,6 +140,7 @@ reg = rf'(?=({reg}))'
 m = max((x.group(1) for x in finditer(reg, s)), key=len)
 print(len(m))  # 37
 print(m)
+
 
 # 25
 def R(x):
@@ -172,7 +181,7 @@ data = sorted(list(list(map(int, s.split())) for s in f))
 camera = [-1 for _ in range(k)]
 ans = [0, 0]
 for st, end in data:
-    for i in range(k-1, -1, -1):
+    for i in range(k - 1, -1, -1):
         if camera[i] + 1 <= st:
             camera[i] = end
             ans[1] = i + 1
