@@ -21,7 +21,7 @@ def f(n):
 for n in range(1000):
     if f(n) < 300:
         nmax = max(nmax, n)
-print(nmax) #36
+print(nmax) # 36
 '''
 #  № 12779
 #  paint

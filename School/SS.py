@@ -1008,7 +1008,7 @@ print(get_centroid(cl))
 # A: 352342 343732
 # B: 6446 857780"""
 
-f = open('files/26_20910.txt')
+"""f = open('files/26_20910.txt')
 N, M, K = [int(x) for x in f.readline().split()]
 print(N, M, K)
 min_ryad = [M + 1] * (K + 1)
@@ -1022,4 +1022,78 @@ for mesto in range(1, K):
         print(mesto, mesto + 1)  # 6660 6661
     m.append(r)
 print(m)
-print(max(m))  # 21028
+print(max(m))  # 21028"""
+
+# № 17643
+"""f = open('files/26_17643.txt')
+n = int(f.readline())
+
+# f = ('10 100 1', '3 10 0', '10 100 0', '2 10 1', '10 100 0', '3 10 1', '11 100 0', '1 200 0')
+# n = 8
+
+data = [list(map(int, s.split())) for s in f]
+data.sort(key=lambda x: x[1], reverse=True)
+# ID cost status
+
+middle_price = sum(x[1] for x in data) / len(data)
+expensive = [x for x in data if x[1] > middle_price]
+sailed_expensive_id = [x for x in expensive if x[2] == 0]
+# 1
+most_sailed_id = max(sailed_expensive_id.count(x) for x in sailed_expensive_id)
+most_sailed = [x for x in sailed_expensive_id if sailed_expensive_id.count(x) == most_sailed_id]
+
+# 2
+mx_cost = max(x[1] for x in most_sailed)
+most_sailed = [x for x in most_sailed if x[1] == mx_cost]
+# 3
+nt_sailed_id = [x[0] for x in data if x[0] == 0]
+most_sailed = min([nt_sailed_id.count(x[0]), x] for x in most_sailed)[1]
+print(most_sailed)
+sm_most_sailed = most_sailed[1] * data.count(most_sailed)
+c_most_sailed = len([x for x in data if x[0] == most_sailed[0] and x[2] == 1])
+print(sm_most_sailed, c_most_sailed)  # 43656 36"""
+
+# 26 №20396
+"""
+f = open('files/26_20396.txt')
+n, m, k = map(int, f.readline().split())
+
+# f = ['1 1', '6 6', '5 5', '6 7', '4 4', '2 2', '3 3']
+# n, m, k = 7, 7, 8
+# m - ряды, k - места
+mn_ryad = [m + 1] * (k + 1)
+for s in f:
+    ryad, mesto = map(int, s.split())
+    mn_ryad[mesto] = min(mn_ryad[mesto], ryad)
+
+
+mx_r = []
+mx_m = []
+for i in range(1, k):
+    r = min(mn_ryad[i], mn_ryad[i+1]) - 1
+    if r == 88888:
+        mx_m.append(i+1)
+    mx_r.append(r)
+print(max(mx_r), max(mx_m))  # 88888 68111"""
+
+# 26 №21512
+"""f = open('files/26_21512.txt')
+n, m, k = map(int, f.readline().split())
+
+# f = ['1 2', '2 3', '3 4', '4 5', '5 6', '6 7', '1 7', '2 8']
+# n, m, k = 8, 6, 9  # кол-во (занятых, рядов, мест)
+
+mn_ryad = [m + 1] * (k + 1)
+for s in f:
+    ryad, mesto = map(int, s.split())
+    mn_ryad[mesto] = min(mn_ryad[mesto], ryad)
+
+m_r = []
+m_m = 0
+for i in range(1, k-1):
+    r = min(mn_ryad[i], mn_ryad[i+1], mn_ryad[i+2]) - 1
+    if r == 1804:
+        print(i)
+        m_m = i
+    m_r.append(r)
+print(max(m_r), m_m)  # 1804 4434"""

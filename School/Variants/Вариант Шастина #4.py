@@ -241,12 +241,25 @@ for i in range(1996, 10 ** 10, 1996):
 # 1592484648 797838
 
 # 26 №18228
-
 f = open('files/26_18228.txt')
-n, r = f.readline().split()  # кол-во балок для покупки # длина одной платформы
-# 9876 # 40000400004
-data = []
-for i in range(len(n)):
-    s = f.readline()
-    data.append(list(map(int, s.split())))
+n, r = map(int, f.readline().split())
+# кол-во балок для покупки # длина одной платформы
+# f = ['20 15 30', '10 5 14 9 11', '40 8', '7', '50 7 12 9 16 35']
+# n, r = 5, 63
 
+sizes = sorted((sorted(map(int, s.split()))[::-1], num) for num, s in enumerate(f, 1))[::-1]
+bought = []
+for weights, num in sizes:
+    bought.append((weights[0], num))
+    s = sum(x[0] for x in bought)
+    if s >= 2 * r:
+        wrong = [x[1] for x in bought]
+        minim = bought[-1]
+        for weights, num in sizes:
+            for size in weights:
+                if (size, num) not in bought and s - (max(weights) if num in wrong else bought[-1][0]) \
+                        + size >= 2 * r and size < minim[0]:
+                    minim = (size, num)
+        break
+
+print(len(bought), minim[1])  # 9462 2898

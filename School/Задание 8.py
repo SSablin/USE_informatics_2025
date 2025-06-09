@@ -57,7 +57,6 @@ for i in product([i for i in range(25)], repeat=4):
         c += 1
 print(c)  # 50184"""
 
-
 # 8 18976
 """from itertools import product
 
@@ -70,7 +69,6 @@ for x in product(alf, repeat=5):
                     "".join(str(x % 2) for x in x).count('00') == 0:
                 c += 1
                 print(x, c)  # 13000"""
-
 
 """from itertools import product
 
@@ -88,3 +86,20 @@ for x in product((str(x) for x in range(12)), repeat=6):
     if x[0] != '0' and sum(1 for i in x if int(i) % 2 == 0) == sum(1 for i in x if int(i) % 2 != 0) and x.count('11') == 1:
         c += 1
         print(c, x)"""
+
+# №21894
+from itertools import product
+
+c = 0
+for i in product('0123456789', repeat=4):
+    s = ''.join(i)
+    if s[0] != '0':
+        # if all(s.count(x) == 1 for x in s):
+        if len(set(s)) == len(s):
+            s1 = s
+            for ch in '02468': s1 = s1.replace(ch, '0')
+            for nch in '13579': s1 = s1.replace(nch, '1')
+            if s1.count('11') == 0 and s1.count('00') == 0:
+                c += 1
+                print(s, c)  # 720
+
